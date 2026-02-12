@@ -1,0 +1,2786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transparent Eyeball — Full-Stack Marketing Consulting for Mobile Games & Family Apps</title>
+<meta name="description" content="Transparent Eyeball offers end-to-end marketing consulting for mobile games and family apps. From brand strategy through growth marketing — one senior partner, zero gaps.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg-primary: #0e0c0a;
+  --bg-secondary: #151210;
+  --bg-tertiary: #1e1a17;
+  --bg-card: #171412;
+  --text-primary: #e8e2da;
+  --text-secondary: #a89e94;
+  --text-muted: #706860;
+  --accent: #b8a99a;
+  --accent-dim: rgba(184, 169, 154, 0.12);
+  --accent-glow: rgba(184, 169, 154, 0.06);
+  --border: rgba(255, 245, 235, 0.06);
+  --border-hover: rgba(255, 245, 235, 0.12);
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { cursor: pointer; font-family: inherit; border: none; background: none; }
+input, textarea, select { font-family: inherit; }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ===== NAVIGATION ===== */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 20px 0;
+  transition: all 0.4s var(--ease-out);
+  background: transparent;
+}
+
+nav.scrolled {
+  background: rgba(14, 12, 10, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+nav .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-logo svg {
+  width: 32px;
+  height: 32px;
+}
+
+.nav-logo span {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  transition: color 0.2s;
+  font-weight: 400;
+}
+
+.nav-links a:hover { color: var(--text-primary); }
+
+.nav-cta {
+  background: var(--accent) !important;
+  color: var(--bg-primary) !important;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: all 0.2s;
+}
+
+.nav-cta:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.mobile-menu-btn {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 4px;
+}
+
+.mobile-menu-btn span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--text-primary);
+  transition: all 0.3s;
+}
+
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(14, 12, 10, 0.98);
+  backdrop-filter: blur(20px);
+  z-index: 999;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+}
+
+.mobile-nav.active { display: flex; }
+
+.mobile-nav a {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+  transition: color 0.2s;
+}
+
+.mobile-nav a:hover { color: var(--text-primary); }
+
+.mobile-nav-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+}
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 120px 24px 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-logo {
+  margin-bottom: 40px;
+  opacity: 0;
+  animation: fadeUp 0.8s var(--ease-out) 0.2s forwards;
+}
+
+.hero-logo svg {
+  width: 100px;
+  height: 100px;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 8px;
+  opacity: 0;
+  animation: fadeUp 0.8s var(--ease-out) 0.35s forwards;
+}
+
+.hero-tagline {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 24px;
+  letter-spacing: 0.02em;
+  opacity: 0;
+  animation: fadeUp 0.8s var(--ease-out) 0.5s forwards;
+}
+
+.hero-description {
+  max-width: 620px;
+  color: var(--text-secondary);
+  font-size: 1.125rem;
+  line-height: 1.7;
+  margin-bottom: 40px;
+  opacity: 0;
+  animation: fadeUp 0.8s var(--ease-out) 0.65s forwards;
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--accent);
+  color: var(--bg-primary);
+  padding: 16px 32px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+  transition: all 0.3s var(--ease-out);
+  opacity: 0;
+  animation: fadeUp 0.8s var(--ease-out) 0.8s forwards;
+}
+
+.hero-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(184, 169, 154, 0.2);
+}
+
+.hero-cta svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.3s;
+}
+
+.hero-cta:hover svg {
+  transform: translateX(3px);
+}
+
+/* ===== SECTION COMMON ===== */
+section {
+  padding: 100px 0;
+}
+
+.section-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+
+.section-subtitle {
+  color: var(--text-secondary);
+  font-size: 1.125rem;
+  line-height: 1.7;
+  max-width: 600px;
+}
+
+/* ===== APPROACH SECTION ===== */
+.approach {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.approach-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.approach-header .section-subtitle {
+  margin: 0 auto;
+}
+
+/* Continuum visual */
+.continuum {
+  position: relative;
+  margin-bottom: 64px;
+}
+
+.continuum-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  padding: 0 20px;
+}
+
+.continuum-line::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 40px;
+  right: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-dim));
+  transform: translateY(-50%);
+}
+
+.continuum-node {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.continuum-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 3px solid var(--bg-secondary);
+  box-shadow: 0 0 20px rgba(184, 169, 154, 0.25);
+}
+
+.continuum-label {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-align: center;
+  white-space: nowrap;
+  color: var(--text-primary);
+}
+
+/* Capability cards */
+.capabilities-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+
+.capability-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px 20px;
+  transition: all 0.3s var(--ease-out);
+  position: relative;
+  overflow: hidden;
+}
+
+.capability-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.capability-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-4px);
+}
+
+.capability-card:hover::before { opacity: 1; }
+
+.capability-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: var(--accent-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  color: var(--accent);
+}
+
+.capability-card h3 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+}
+
+.capability-card p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Integrated approach callout */
+.integrated-callout {
+  margin-top: 48px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 32px 40px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.integrated-callout-icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--accent-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+}
+
+.integrated-callout h3 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.integrated-callout p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+/* ===== ASSESSMENT SECTION ===== */
+.assessment {
+  position: relative;
+}
+
+.assessment::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.assessment-header {
+  text-align: center;
+  margin-bottom: 48px;
+  position: relative;
+}
+
+.assessment-header .section-subtitle {
+  margin: 0 auto;
+}
+
+/* Assessment container */
+.assessment-container {
+  max-width: 720px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Progress bar */
+.progress-bar {
+  height: 3px;
+  background: var(--bg-tertiary);
+  border-radius: 3px;
+  margin-bottom: 40px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 3px;
+  transition: width 0.5s var(--ease-out);
+  width: 0%;
+}
+
+/* Step indicator */
+.step-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.step-count {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* Assessment card */
+.assessment-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 48px 40px;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.assessment-question {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+
+.assessment-hint {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 28px;
+}
+
+/* Radio & checkbox options */
+.options-grid {
+  display: grid;
+  gap: 10px;
+  flex: 1;
+}
+
+.options-grid.two-col {
+  grid-template-columns: 1fr 1fr;
+}
+
+.option-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 20px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+  user-select: none;
+}
+
+.option-item:hover {
+  border-color: var(--border-hover);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.option-item.selected {
+  border-color: var(--accent);
+  background: var(--accent-dim);
+}
+
+.option-item input {
+  display: none;
+}
+
+.option-check {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid var(--text-muted);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.option-item.checkbox .option-check {
+  border-radius: 4px;
+}
+
+.option-item.selected .option-check {
+  border-color: var(--accent);
+  background: var(--accent);
+}
+
+.option-check-inner {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--bg-primary);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.option-item.checkbox .option-check-inner {
+  border-radius: 1px;
+  width: 10px;
+  height: 10px;
+  background: none;
+}
+
+.option-item.selected .option-check-inner {
+  opacity: 1;
+}
+
+.option-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.option-label {
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.option-desc {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* Select dropdown */
+.select-wrapper {
+  position: relative;
+}
+
+.styled-select {
+  width: 100%;
+  padding: 16px 20px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  font-size: 1rem;
+  appearance: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.styled-select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.select-wrapper::after {
+  content: '';
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid var(--text-muted);
+  pointer-events: none;
+}
+
+/* Textarea */
+.styled-textarea {
+  width: 100%;
+  padding: 16px 20px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  font-size: 1rem;
+  resize: vertical;
+  min-height: 100px;
+  transition: all 0.2s;
+}
+
+.styled-textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+/* Navigation buttons */
+.assessment-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+
+.btn-back {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s;
+  padding: 10px 0;
+}
+
+.btn-back:hover { color: var(--text-primary); }
+
+.btn-next {
+  background: var(--accent);
+  color: var(--bg-primary);
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s;
+}
+
+.btn-next:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(184, 169, 154, 0.2);
+}
+
+.btn-next:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.btn-next svg, .btn-back svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* ===== RESULTS ===== */
+.results-container {
+  max-width: 800px;
+  margin: 0 auto;
+  display: none;
+}
+
+.results-container.active { display: block; }
+
+.results-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.results-header h2 {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.results-header p {
+  color: var(--text-secondary);
+}
+
+/* Readiness Score */
+.readiness-score {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  margin-bottom: 48px;
+  padding: 32px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+
+.score-circle {
+  width: 120px;
+  height: 120px;
+  position: relative;
+}
+
+.score-circle svg {
+  width: 120px;
+  height: 120px;
+  transform: rotate(-90deg);
+}
+
+.score-circle-bg {
+  fill: none;
+  stroke: var(--bg-tertiary);
+  stroke-width: 6;
+}
+
+.score-circle-fill {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-dasharray: 326.7;
+  stroke-dashoffset: 326.7;
+  transition: stroke-dashoffset 1.5s var(--ease-out);
+}
+
+.score-number {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.score-details h3 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.score-details p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+/* Results sections */
+.results-section {
+  margin-bottom: 32px;
+}
+
+.results-section-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.results-section-title span {
+  color: var(--accent);
+}
+
+.roadmap-list {
+  list-style: none;
+}
+
+.roadmap-item {
+  display: flex;
+  gap: 16px;
+  padding: 16px 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.roadmap-phase {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.75rem;
+  color: var(--accent);
+  white-space: nowrap;
+  padding-top: 2px;
+  min-width: 80px;
+}
+
+.roadmap-content h4 {
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 2px;
+}
+
+.roadmap-content p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+/* Risk items */
+.risk-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 20px;
+  background: rgba(255, 80, 80, 0.05);
+  border: 1px solid rgba(255, 80, 80, 0.1);
+  border-radius: 10px;
+  margin-bottom: 8px;
+}
+
+.risk-icon {
+  color: #ff5050;
+  font-size: 0.9rem;
+  padding-top: 2px;
+  flex-shrink: 0;
+}
+
+.risk-item p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+/* Benchmark items */
+.benchmark-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.benchmark-item {
+  padding: 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.benchmark-value {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+
+.benchmark-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* Package recommendation */
+.package-card {
+  padding: 28px;
+  background: var(--bg-card);
+  border: 2px solid var(--accent);
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.package-card::before {
+  content: 'RECOMMENDED';
+  position: absolute;
+  top: 16px;
+  right: -32px;
+  background: var(--accent);
+  color: var(--bg-primary);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 4px 40px;
+  transform: rotate(45deg);
+}
+
+.package-card h4 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.package-card p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+}
+
+.package-priorities {
+  list-style: none;
+  display: grid;
+  gap: 6px;
+}
+
+.package-priorities li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.package-priorities li::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+/* Next steps */
+.next-steps-list {
+  list-style: none;
+  counter-reset: steps;
+}
+
+.next-step-item {
+  counter-increment: steps;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.next-step-item:last-child { border-bottom: none; }
+
+.next-step-num {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--accent);
+  min-width: 32px;
+}
+
+.next-step-item h4 {
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 2px;
+}
+
+.next-step-item p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+/* Results actions */
+.results-actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 40px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--accent);
+  color: var(--bg-primary);
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+}
+
+.btn-download:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(184, 169, 154, 0.2);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  color: var(--text-primary);
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 1px solid var(--border);
+  transition: all 0.2s;
+}
+
+.btn-secondary:hover {
+  border-color: var(--border-hover);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* ===== CLIENTS SECTION ===== */
+.clients {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 80px 0;
+}
+
+.clients-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.clients-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 64px;
+  flex-wrap: wrap;
+}
+
+.client-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  opacity: 0.6;
+  transition: opacity 0.3s;
+}
+
+.client-logo:hover { opacity: 1; }
+
+.client-logo-img {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.client-logo-img svg {
+  height: 48px;
+  width: auto;
+}
+
+.client-logo span {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.03em;
+}
+
+/* ===== ABOUT SECTION ===== */
+.about-content {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.about-image {
+  position: relative;
+}
+
+.about-image-frame {
+  aspect-ratio: 4/5;
+  background: var(--bg-tertiary);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.about-image-frame img {
+  position: relative;
+  z-index: 0;
+}
+
+.about-image-frame::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(transparent, var(--bg-card));
+  z-index: 1;
+}
+
+.about-initials {
+  font-family: var(--font-display);
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--accent);
+  opacity: 0.3;
+}
+
+.about-text .section-label { margin-bottom: 12px; }
+
+.about-text h2 {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 6px;
+}
+
+.about-role {
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 24px;
+  font-size: 1rem;
+}
+
+.about-bio {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.about-bio p {
+  margin-bottom: 16px;
+}
+
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.about-stat {
+  padding: 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.about-stat-value {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+
+.about-stat-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* ===== CONTACT SECTION ===== */
+.contact {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+}
+
+.contact-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.contact-info h2 {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 16px;
+}
+
+.contact-info p {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+
+.contact-detail {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  color: var(--text-secondary);
+}
+
+.contact-detail-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: var(--accent-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.contact-form {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 40px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: var(--text-secondary);
+}
+
+.form-input {
+  width: 100%;
+  padding: 14px 18px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  transition: all 0.2s;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.form-input::placeholder {
+  color: var(--text-muted);
+}
+
+textarea.form-input {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-submit {
+  width: 100%;
+  background: var(--accent);
+  color: var(--bg-primary);
+  padding: 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.form-submit:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(184, 169, 154, 0.2);
+}
+
+/* ===== FOOTER ===== */
+footer {
+  padding: 40px 0;
+  border-top: 1px solid var(--border);
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-logo svg {
+  width: 24px;
+  height: 24px;
+}
+
+.footer-logo span {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.footer-copy {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: all 0.6s var(--ease-out);
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Slide transitions for assessment steps */
+.step-content {
+  display: none;
+  animation: slideIn 0.3s var(--ease-out);
+}
+
+.step-content.active { display: flex; flex-direction: column; flex: 1; }
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .capabilities-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .capabilities-grid .capability-card:nth-child(4),
+  .capabilities-grid .capability-card:nth-child(5) {
+    grid-column: span 1;
+  }
+
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .about-image { max-width: 300px; }
+
+  .contact-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .mobile-menu-btn { display: flex; }
+
+  .hero { padding: 100px 24px 60px; }
+
+  section { padding: 72px 0; }
+
+  .capabilities-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .continuum-line { display: none; }
+
+  .continuum {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    text-align: center;
+  }
+
+  .continuum-node { gap: 6px; }
+
+  .continuum-dot { width: 10px; height: 10px; }
+
+  .continuum-label { font-size: 0.6rem; }
+
+  .options-grid.two-col { grid-template-columns: 1fr; }
+
+  .assessment-card { padding: 32px 24px; }
+
+  .integrated-callout {
+    flex-direction: column;
+    text-align: center;
+    padding: 28px 24px;
+  }
+
+  .benchmark-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .readiness-score {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .results-actions {
+    flex-direction: column;
+  }
+
+  .results-actions .btn-download,
+  .results-actions .btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-logo svg { width: 72px; height: 72px; }
+
+  .continuum {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .clients-logos {
+    gap: 40px;
+  }
+}
+
+/* Toast notification */
+.toast {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  background: var(--bg-card);
+  border: 1px solid var(--accent);
+  border-radius: 10px;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 2000;
+  transform: translateY(120%);
+  transition: transform 0.4s var(--ease-out);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+
+.toast.show { transform: translateY(0); }
+
+.toast-icon { color: var(--accent); font-size: 1.2rem; }
+
+.toast-text { font-size: 0.9rem; }
+</style>
+</head>
+<body>
+
+<!-- ===== NAVIGATION ===== -->
+<nav id="navbar">
+  <div class="container">
+    <a href="#" class="nav-logo">
+      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Woodcut-style eye -->
+        <ellipse cx="20" cy="20" rx="18" ry="12" stroke="#e8e2da" stroke-width="1.5" fill="none"/>
+        <ellipse cx="20" cy="20" rx="15" ry="10" stroke="#e8e2da" stroke-width="0.8" fill="none"/>
+        <circle cx="20" cy="20" r="7" stroke="#e8e2da" stroke-width="1.2" fill="none"/>
+        <circle cx="20" cy="20" r="4" stroke="#e8e2da" stroke-width="1" fill="none"/>
+        <circle cx="20" cy="20" r="2" fill="#e8e2da"/>
+        <!-- Radiating lines from pupil -->
+        <line x1="20" y1="13" x2="20" y2="9" stroke="#e8e2da" stroke-width="0.7" stroke-linecap="round"/>
+        <line x1="24" y1="14" x2="26" y2="10" stroke="#e8e2da" stroke-width="0.7" stroke-linecap="round"/>
+        <line x1="27" y1="17" x2="30" y2="14" stroke="#e8e2da" stroke-width="0.7" stroke-linecap="round"/>
+        <line x1="16" y1="14" x2="14" y2="10" stroke="#e8e2da" stroke-width="0.7" stroke-linecap="round"/>
+        <line x1="13" y1="17" x2="10" y2="14" stroke="#e8e2da" stroke-width="0.7" stroke-linecap="round"/>
+        <!-- Upper lid detail -->
+        <path d="M5 20 Q12 10 20 8 Q28 10 35 20" stroke="#e8e2da" stroke-width="0.6" fill="none"/>
+      </svg>
+      <span>Transparent Eyeball</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#approach">Approach</a></li>
+      <li><a href="#assessment">Assessment</a></li>
+      <li><a href="#clients">Clients</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#assessment" class="nav-cta">Start Assessment</a></li>
+    </ul>
+    <button class="mobile-menu-btn" onclick="toggleMobileNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-nav-close" onclick="toggleMobileNav()">&times;</button>
+  <a href="#approach" onclick="toggleMobileNav()">Approach</a>
+  <a href="#assessment" onclick="toggleMobileNav()">Assessment</a>
+  <a href="#clients" onclick="toggleMobileNav()">Clients</a>
+  <a href="#about" onclick="toggleMobileNav()">About</a>
+  <a href="#contact" onclick="toggleMobileNav()">Contact</a>
+  <a href="#assessment" class="nav-cta" onclick="toggleMobileNav()" style="margin-top:16px;">Start Assessment</a>
+</div>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="hero">
+  <div class="hero-logo">
+    <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Woodcut-style eye illustration -->
+      <!-- Outer eye shape - layered eyelids -->
+      <ellipse cx="60" cy="60" rx="54" ry="36" stroke="#e8e2da" stroke-width="1.8" fill="none"/>
+      <ellipse cx="60" cy="60" rx="48" ry="31" stroke="#e8e2da" stroke-width="1" fill="none" opacity="0.6"/>
+      <ellipse cx="60" cy="60" rx="42" ry="26" stroke="#e8e2da" stroke-width="0.8" fill="none" opacity="0.4"/>
+      <!-- Iris with concentric circles -->
+      <circle cx="60" cy="60" r="22" stroke="#e8e2da" stroke-width="1.5" fill="none"/>
+      <circle cx="60" cy="60" r="18" stroke="#e8e2da" stroke-width="0.8" fill="none" opacity="0.5"/>
+      <circle cx="60" cy="60" r="14" stroke="#e8e2da" stroke-width="1" fill="none"/>
+      <!-- Pupil -->
+      <circle cx="60" cy="60" r="8" fill="#e8e2da"/>
+      <circle cx="57" cy="57" r="2.5" fill="#0e0c0a"/>
+      <!-- Radiating lines from pupil (woodcut style) -->
+      <line x1="60" y1="38" x2="60" y2="26" stroke="#e8e2da" stroke-width="1" stroke-linecap="round"/>
+      <line x1="67" y1="39" x2="72" y2="28" stroke="#e8e2da" stroke-width="1" stroke-linecap="round"/>
+      <line x1="73" y1="43" x2="82" y2="34" stroke="#e8e2da" stroke-width="1" stroke-linecap="round"/>
+      <line x1="78" y1="50" x2="88" y2="44" stroke="#e8e2da" stroke-width="1" stroke-linecap="round"/>
+      <line x1="53" y1="39" x2="48" y2="28" stroke="#e8e2da" stroke-width="1" stroke-linecap="round"/>
+      <line x1="47" y1="43" x2="38" y2="34" stroke="#e8e2da" stroke-width="1" stroke-linecap="round"/>
+      <line x1="42" y1="50" x2="32" y2="44" stroke="#e8e2da" stroke-width="1" stroke-linecap="round"/>
+      <!-- Lower radiating lines -->
+      <line x1="60" y1="82" x2="60" y2="92" stroke="#e8e2da" stroke-width="0.8" stroke-linecap="round" opacity="0.5"/>
+      <line x1="67" y1="80" x2="72" y2="90" stroke="#e8e2da" stroke-width="0.8" stroke-linecap="round" opacity="0.5"/>
+      <line x1="53" y1="80" x2="48" y2="90" stroke="#e8e2da" stroke-width="0.8" stroke-linecap="round" opacity="0.5"/>
+      <!-- Upper eyelid detail curves -->
+      <path d="M12 60 Q30 30 60 24 Q90 30 108 60" stroke="#e8e2da" stroke-width="1.2" fill="none"/>
+      <path d="M18 58 Q35 34 60 28 Q85 34 102 58" stroke="#e8e2da" stroke-width="0.6" fill="none" opacity="0.4"/>
+      <!-- Lower eyelid detail -->
+      <path d="M12 60 Q30 88 60 94 Q90 88 108 60" stroke="#e8e2da" stroke-width="0.6" fill="none" opacity="0.3"/>
+    </svg>
+  </div>
+  <h1>Transparent Eyeball</h1>
+  <p class="hero-tagline">Full-Stack Marketing Consulting for Mobile Games & Family Apps</p>
+  <p class="hero-description">
+    Your end-to-end strategic partner from brand building through go-to-market.
+    One senior strategist. Every marketing discipline. Zero gaps between strategy and execution.
+  </p>
+  <a href="#assessment" class="hero-cta">
+    Discover Your GTM Readiness
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </a>
+</section>
+
+<!-- ===== APPROACH ===== -->
+<section class="approach" id="approach">
+  <div class="container">
+    <div class="approach-header fade-in">
+      <p class="section-label">The Full-Spectrum Approach</p>
+      <h2 class="section-title">Strategy Without Seams</h2>
+      <p class="section-subtitle">Most teams cobble together specialists. You get one senior strategist who sees the entire picture and connects every discipline into a single, coherent growth engine.</p>
+    </div>
+
+    <!-- Continuum -->
+    <div class="continuum fade-in">
+      <div class="continuum-line">
+        <div class="continuum-node"><div class="continuum-dot"></div><span class="continuum-label">Brand Strategy</span></div>
+        <div class="continuum-node"><div class="continuum-dot"></div><span class="continuum-label">Transmedia<br>Storytelling</span></div>
+        <div class="continuum-node"><div class="continuum-dot"></div><span class="continuum-label">Strategic<br>Partnerships</span></div>
+        <div class="continuum-node"><div class="continuum-dot"></div><span class="continuum-label">Go-to-Market<br>Strategy</span></div>
+        <div class="continuum-node"><div class="continuum-dot"></div><span class="continuum-label">Growth<br>Marketing</span></div>
+      </div>
+    </div>
+
+    <!-- Capability cards -->
+    <div class="capabilities-grid fade-in">
+      <div class="capability-card">
+        <div class="capability-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+        </div>
+        <h3>Brand Strategy</h3>
+        <p>Define your positioning, audience, and narrative foundation. Build a brand that resonates with families and stands out in crowded app stores.</p>
+      </div>
+      <div class="capability-card">
+        <div class="capability-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        <h3>Transmedia Storytelling</h3>
+        <p>Extend your IP across platforms and touchpoints. Create narrative ecosystems that deepen engagement and build lasting emotional connections.</p>
+      </div>
+      <div class="capability-card">
+        <div class="capability-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Strategic Partnerships</h3>
+        <p>Identify and secure the right partners, licensors, and distribution channels. Leverage relationships that multiply reach without multiplying spend.</p>
+      </div>
+      <div class="capability-card">
+        <div class="capability-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <h3>Go-to-Market Strategy</h3>
+        <p>Plan every phase from soft launch to scale. Coordinate timing, channels, messaging, and budget into a launch that actually lands.</p>
+      </div>
+      <div class="capability-card">
+        <div class="capability-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3>Growth Marketing</h3>
+        <p>Drive acquisition, retention, and revenue through data-informed UA, ASO, creative testing, and lifecycle marketing. Scale what works, cut what doesn't.</p>
+      </div>
+    </div>
+
+    <!-- Integrated callout -->
+    <div class="integrated-callout fade-in">
+      <div class="integrated-callout-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+      </div>
+      <div>
+        <h3>Why Integration Matters</h3>
+        <p>When brand, narrative, partnerships, and growth work as one system instead of separate silos, every dollar works harder and every message reinforces the last. That's the Transparent Eyeball difference.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GTM READINESS ASSESSMENT ===== -->
+<section class="assessment" id="assessment">
+  <div class="container">
+    <div class="assessment-header fade-in">
+      <p class="section-label">Free Strategic Tool</p>
+      <h2 class="section-title">GTM Readiness Assessment</h2>
+      <p class="section-subtitle">Answer a few questions about your game or app and receive a personalized go-to-market brief with actionable recommendations.</p>
+    </div>
+
+    <!-- Assessment Form -->
+    <div class="assessment-container" id="assessmentForm">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <div class="step-indicator">
+        <span class="step-count" id="stepCount">Question 1 of 10</span>
+      </div>
+      <div class="assessment-card" id="assessmentCard">
+        <!-- Steps will be rendered by JS -->
+      </div>
+    </div>
+
+    <!-- Results (hidden initially) -->
+    <div class="results-container" id="resultsContainer">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ===== CLIENTS ===== -->
+<section class="clients" id="clients">
+  <div class="container">
+    <div class="clients-header fade-in">
+      <p class="section-label">Trusted By</p>
+      <h2 class="section-title">World-Class Partners</h2>
+    </div>
+    <div class="clients-logos fade-in">
+      <div class="client-logo">
+        <div class="client-logo-img">
+          <svg viewBox="0 0 160 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <text x="80" y="32" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-weight="600" font-size="20" fill="#f0eff4">Sago Mini</text>
+          </svg>
+        </div>
+      </div>
+      <div class="client-logo">
+        <div class="client-logo-img">
+          <svg viewBox="0 0 160 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <text x="80" y="32" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-weight="600" font-size="20" fill="#f0eff4">Toca Boca</text>
+          </svg>
+        </div>
+      </div>
+      <div class="client-logo">
+        <div class="client-logo-img">
+          <svg viewBox="0 0 200 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <text x="100" y="32" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-weight="600" font-size="20" fill="#f0eff4">Adventure Club</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-content fade-in">
+      <div class="about-image">
+        <div class="about-image-frame">
+          <!-- Replace src with actual photo path, e.g. "marja-photo.jpg" -->
+          <img src="marja-photo.jpg" alt="Marja Konttinen" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none';this.parentElement.querySelector('.about-initials').style.display='block';">
+          <span class="about-initials" style="display:none;">MK</span>
+        </div>
+      </div>
+      <div class="about-text">
+        <p class="section-label">About</p>
+        <h2>Marja Konttinen</h2>
+        <p class="about-role">Founder, Transparent Eyeball</p>
+        <div class="about-bio">
+          <p>A senior marketing strategist with deep roots in mobile games and family entertainment. Marja has shaped go-to-market strategies and brand narratives for some of the most recognized names in children's digital media.</p>
+          <p>With experience spanning brand development, transmedia storytelling, strategic partnerships, and performance marketing, she brings a rare full-spectrum perspective to every engagement. No handoffs between specialists, no gaps between strategy and execution.</p>
+          <p>Marja works as a true strategic partner: embedded in your team, fluent in your product, and accountable for results across the entire marketing stack.</p>
+        </div>
+        <div class="about-stats">
+          <div class="about-stat">
+            <div class="about-stat-value">15+</div>
+            <div class="about-stat-label">Years in Mobile & Family</div>
+          </div>
+          <div class="about-stat">
+            <div class="about-stat-value">50M+</div>
+            <div class="about-stat-label">Users Reached</div>
+          </div>
+          <div class="about-stat">
+            <div class="about-stat-value">Full Stack</div>
+            <div class="about-stat-label">Brand to Growth</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-content fade-in">
+      <div class="contact-info">
+        <p class="section-label">Get in Touch</p>
+        <h2>Let's Build Your<br>Growth Engine</h2>
+        <p>Whether you're pre-launch or scaling, the first step is a conversation. Tell me about your game or app and I'll tell you how I can help.</p>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <span>hello@transparenteyeball.fi</span>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <span>Helsinki, Finland / Remote Worldwide</span>
+        </div>
+      </div>
+      <form class="contact-form" id="contactForm" onsubmit="handleContactSubmit(event)">
+        <div class="form-group">
+          <label class="form-label">Name</label>
+          <input type="text" class="form-input" placeholder="Your name" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-input" placeholder="you@company.com" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Company / Game</label>
+          <input type="text" class="form-input" placeholder="Your company or game name">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Message</label>
+          <textarea class="form-input" placeholder="Tell me about your project..."></textarea>
+        </div>
+        <button type="submit" class="form-submit">
+          Send Message
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="20" cy="20" rx="18" ry="12" stroke="#e8e2da" stroke-width="1.2" fill="none"/>
+          <circle cx="20" cy="20" r="7" stroke="#e8e2da" stroke-width="1" fill="none"/>
+          <circle cx="20" cy="20" r="3" fill="#e8e2da"/>
+          <path d="M5 20 Q12 10 20 8 Q28 10 35 20" stroke="#e8e2da" stroke-width="0.8" fill="none"/>
+        </svg>
+        <span>Transparent Eyeball</span>
+      </div>
+      <p class="footer-copy">&copy; 2026 Transparent Eyeball. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Toast -->
+<div class="toast" id="toast">
+  <span class="toast-icon">&#10003;</span>
+  <span class="toast-text" id="toastText">Message sent successfully!</span>
+</div>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+// ========== NAV ==========
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+function toggleMobileNav() {
+  document.getElementById('mobileNav').classList.toggle('active');
+}
+
+// ========== INTERSECTION OBSERVER FOR FADE-INS ==========
+const observerOpts = { threshold: 0.15, rootMargin: '0px 0px -40px 0px' };
+const fadeObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); fadeObserver.unobserve(e.target); }});
+}, observerOpts);
+document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
+
+// ========== TOAST ==========
+function showToast(text) {
+  const t = document.getElementById('toast');
+  document.getElementById('toastText').textContent = text;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3500);
+}
+
+// ========== CONTACT FORM ==========
+function handleContactSubmit(e) {
+  e.preventDefault();
+  const form = e.target;
+  const data = new FormData(form);
+
+  // Build mailto link as fallback
+  const subject = encodeURIComponent('New inquiry from Transparent Eyeball website');
+  const body = encodeURIComponent(
+    `Name: ${form.querySelector('input[type="text"]').value}\n` +
+    `Email: ${form.querySelectorAll('input')[1].value}\n` +
+    `Company: ${form.querySelectorAll('input')[2].value}\n\n` +
+    `Message:\n${form.querySelector('textarea').value}`
+  );
+
+  window.location.href = `mailto:hello@transparenteyeball.fi?subject=${subject}&body=${body}`;
+  showToast('Opening your email client...');
+}
+
+// ========== GTM READINESS ASSESSMENT ==========
+const assessmentSteps = [
+  {
+    id: 'stage',
+    question: 'What stage is your game or app in?',
+    hint: 'This helps us tailor recommendations to where you are right now.',
+    type: 'radio',
+    options: [
+      { value: 'pre-production', label: 'Pre-Production', desc: 'Concept phase, early prototyping' },
+      { value: 'production', label: 'In Production', desc: 'Building the product, not yet live' },
+      { value: 'soft-launch', label: 'Soft Launch', desc: 'Live in limited markets, testing' },
+      { value: 'live', label: 'Live / Scaling', desc: 'Globally launched, looking to grow' },
+    ]
+  },
+  {
+    id: 'genre',
+    question: 'What genre or category best describes your product?',
+    hint: 'Benchmarks and strategies vary significantly by category.',
+    type: 'radio',
+    options: [
+      { value: 'casual-puzzle', label: 'Casual / Puzzle' },
+      { value: 'kids-educational', label: 'Kids & Educational' },
+      { value: 'mid-core', label: 'Mid-Core / Strategy' },
+      { value: 'family-entertainment', label: 'Family Entertainment' },
+      { value: 'creative-sandbox', label: 'Creative / Sandbox' },
+      { value: 'other', label: 'Other' },
+    ]
+  },
+  {
+    id: 'monetization',
+    question: 'What is your primary monetization model?',
+    hint: 'Your model shapes the entire GTM strategy.',
+    type: 'radio',
+    options: [
+      { value: 'subscription', label: 'Subscription', desc: 'Recurring revenue model' },
+      { value: 'iap', label: 'In-App Purchases', desc: 'Virtual goods, premium content' },
+      { value: 'ads', label: 'Ad-Supported', desc: 'Free with advertising revenue' },
+      { value: 'premium', label: 'Premium (Paid)', desc: 'One-time purchase price' },
+      { value: 'hybrid', label: 'Hybrid', desc: 'Combination of models' },
+    ]
+  },
+  {
+    id: 'audience',
+    question: 'Who is your primary target audience?',
+    hint: 'Select the audience that drives most of your revenue or engagement.',
+    type: 'radio',
+    conditional: true,
+    options: [
+      { value: 'kids-under-6', label: 'Kids Under 6', desc: 'Preschool age, parents decide' },
+      { value: 'kids-6-12', label: 'Kids 6-12', desc: 'Some influence on downloads' },
+      { value: 'teens', label: 'Teens 13-17', desc: 'Independent downloaders' },
+      { value: 'young-adults', label: 'Young Adults 18-34', desc: 'Core mobile gaming demo' },
+      { value: 'families', label: 'Families', desc: 'Multi-generational appeal' },
+      { value: 'broad', label: 'Broad Audience', desc: 'Mass market appeal' },
+    ]
+  },
+  {
+    id: 'challenges',
+    question: 'What are your biggest marketing challenges right now?',
+    hint: 'Select all that apply. Be honest — this shapes your recommendations.',
+    type: 'checkbox',
+    options: [
+      { value: 'brand-positioning', label: 'Unclear brand positioning' },
+      { value: 'ua-costs', label: 'High user acquisition costs' },
+      { value: 'retention', label: 'Poor retention / engagement' },
+      { value: 'creative-assets', label: 'Weak creative assets' },
+      { value: 'market-fit', label: 'Uncertain product-market fit' },
+      { value: 'competition', label: 'Fierce competition in category' },
+      { value: 'budget', label: 'Limited marketing budget' },
+      { value: 'team', label: 'No dedicated marketing team' },
+      { value: 'partnerships', label: 'Need strategic partnerships' },
+      { value: 'international', label: 'International expansion' },
+    ]
+  },
+  {
+    id: 'assets',
+    question: 'What marketing foundations do you already have?',
+    hint: 'Check everything you currently have in place.',
+    type: 'checkbox',
+    twocol: true,
+    options: [
+      { value: 'brand-positioning', label: 'Brand positioning & strategy' },
+      { value: 'narrative', label: 'Narrative / IP strategy' },
+      { value: 'creative', label: 'Creative assets & style guide' },
+      { value: 'community', label: 'Active community' },
+      { value: 'partnerships', label: 'Partnership relationships' },
+      { value: 'ua-strategy', label: 'UA strategy & channels' },
+      { value: 'analytics', label: 'Analytics & attribution' },
+      { value: 'budget-plan', label: 'Marketing budget plan' },
+    ]
+  },
+  {
+    id: 'timeline',
+    question: 'What is your timeline for the next major milestone?',
+    hint: 'When do you need marketing to deliver results?',
+    type: 'radio',
+    options: [
+      { value: 'asap', label: 'ASAP', desc: 'We needed it yesterday' },
+      { value: '1-3-months', label: '1-3 Months', desc: 'Near-term launch or push' },
+      { value: '3-6-months', label: '3-6 Months', desc: 'Building toward a milestone' },
+      { value: '6-12-months', label: '6-12 Months', desc: 'Planning ahead strategically' },
+      { value: '12-plus', label: '12+ Months', desc: 'Long-term strategic planning' },
+    ]
+  },
+  {
+    id: 'budget',
+    question: 'What is your approximate marketing budget range?',
+    hint: 'This helps calibrate recommendations to realistic scope.',
+    type: 'radio',
+    options: [
+      { value: 'bootstrap', label: 'Bootstrap', desc: 'Under $10K — scrappy and smart' },
+      { value: 'starter', label: 'Starter', desc: '$10K – $50K' },
+      { value: 'growth', label: 'Growth', desc: '$50K – $200K' },
+      { value: 'scale', label: 'Scale', desc: '$200K – $1M' },
+      { value: 'enterprise', label: 'Enterprise', desc: '$1M+' },
+    ]
+  },
+  {
+    id: 'success',
+    question: 'How do you primarily measure success?',
+    hint: 'What is the single most important metric for your business right now?',
+    type: 'radio',
+    options: [
+      { value: 'downloads', label: 'Downloads / Installs' },
+      { value: 'revenue', label: 'Revenue / ARPU' },
+      { value: 'retention', label: 'Retention / Engagement' },
+      { value: 'brand-awareness', label: 'Brand Awareness' },
+      { value: 'ltv-cac', label: 'LTV:CAC Ratio' },
+      { value: 'market-share', label: 'Market Share' },
+    ]
+  },
+  {
+    id: 'contact-info',
+    question: 'Where should we send your GTM brief?',
+    hint: 'We\'ll also send a copy to discuss in our initial call.',
+    type: 'contact',
+  }
+];
+
+let currentStep = 0;
+let answers = {};
+
+function renderStep(step) {
+  const s = assessmentSteps[step];
+  const card = document.getElementById('assessmentCard');
+
+  // Update progress
+  const progress = ((step) / assessmentSteps.length) * 100;
+  document.getElementById('progressFill').style.width = progress + '%';
+  document.getElementById('stepCount').textContent = `Question ${step + 1} of ${assessmentSteps.length}`;
+
+  let optionsHTML = '';
+
+  if (s.type === 'radio') {
+    optionsHTML = `<div class="options-grid">${s.options.map(o => `
+      <label class="option-item${answers[s.id] === o.value ? ' selected' : ''}" data-value="${o.value}" onclick="selectOption(this, '${s.id}', '${o.value}', false)">
+        <div class="option-check"><div class="option-check-inner"></div></div>
+        <div class="option-text">
+          <span class="option-label">${o.label}</span>
+          ${o.desc ? `<span class="option-desc">${o.desc}</span>` : ''}
+        </div>
+      </label>
+    `).join('')}</div>`;
+  } else if (s.type === 'checkbox') {
+    const selected = answers[s.id] || [];
+    optionsHTML = `<div class="options-grid${s.twocol ? ' two-col' : ''}">${s.options.map(o => `
+      <label class="option-item checkbox${selected.includes(o.value) ? ' selected' : ''}" data-value="${o.value}" onclick="selectOption(this, '${s.id}', '${o.value}', true)">
+        <div class="option-check">
+          <div class="option-check-inner">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#0e0c0a" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+        </div>
+        <div class="option-text">
+          <span class="option-label">${o.label}</span>
+          ${o.desc ? `<span class="option-desc">${o.desc}</span>` : ''}
+        </div>
+      </label>
+    `).join('')}</div>`;
+  } else if (s.type === 'contact') {
+    const c = answers['contact-info'] || {};
+    optionsHTML = `
+      <div style="display:grid;gap:16px;">
+        <div class="form-group" style="margin:0">
+          <label class="form-label">Your Name</label>
+          <input type="text" class="form-input" id="assess-name" placeholder="Full name" value="${c.name || ''}" onchange="updateContactField('name', this.value)">
+        </div>
+        <div class="form-group" style="margin:0">
+          <label class="form-label">Email Address</label>
+          <input type="email" class="form-input" id="assess-email" placeholder="you@company.com" value="${c.email || ''}" onchange="updateContactField('email', this.value)">
+        </div>
+        <div class="form-group" style="margin:0">
+          <label class="form-label">Company / Game Name</label>
+          <input type="text" class="form-input" id="assess-company" placeholder="Your company or game" value="${c.company || ''}" onchange="updateContactField('company', this.value)">
+        </div>
+      </div>
+    `;
+  }
+
+  const isLast = step === assessmentSteps.length - 1;
+  const canProceed = isStepComplete(step);
+
+  card.innerHTML = `
+    <div class="step-content active">
+      <h3 class="assessment-question">${s.question}</h3>
+      <p class="assessment-hint">${s.hint}</p>
+      ${optionsHTML}
+      <div class="assessment-nav">
+        ${step > 0
+          ? `<button class="btn-back" onclick="goStep(${step - 1})">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+              Back
+            </button>`
+          : '<div></div>'}
+        <button class="btn-next" id="btnNext" onclick="${isLast ? 'generateResults()' : `goStep(${step + 1})`}" ${!canProceed ? 'disabled' : ''}>
+          ${isLast ? 'Get My GTM Brief' : 'Continue'}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+  `;
+}
+
+function isStepComplete(step) {
+  const s = assessmentSteps[step];
+  if (s.type === 'radio') return !!answers[s.id];
+  if (s.type === 'checkbox') return (answers[s.id] || []).length > 0;
+  if (s.type === 'contact') {
+    const c = answers['contact-info'] || {};
+    return c.name && c.email;
+  }
+  return true;
+}
+
+function selectOption(el, id, value, isMulti) {
+  if (isMulti) {
+    if (!answers[id]) answers[id] = [];
+    const idx = answers[id].indexOf(value);
+    if (idx > -1) { answers[id].splice(idx, 1); el.classList.remove('selected'); }
+    else { answers[id].push(value); el.classList.add('selected'); }
+  } else {
+    answers[id] = value;
+    el.parentElement.querySelectorAll('.option-item').forEach(i => i.classList.remove('selected'));
+    el.classList.add('selected');
+  }
+  // Update next button state
+  const btn = document.getElementById('btnNext');
+  if (btn) btn.disabled = !isStepComplete(currentStep);
+}
+
+function updateContactField(field, value) {
+  if (!answers['contact-info']) answers['contact-info'] = {};
+  answers['contact-info'][field] = value;
+  const btn = document.getElementById('btnNext');
+  if (btn) btn.disabled = !isStepComplete(currentStep);
+}
+
+function goStep(step) {
+  currentStep = step;
+  renderStep(step);
+}
+
+// ========== RESULTS GENERATION ==========
+function generateResults() {
+  const stage = answers.stage;
+  const genre = answers.genre;
+  const monetization = answers.monetization;
+  const audience = answers.audience;
+  const challenges = answers.challenges || [];
+  const assets = answers.assets || [];
+  const timeline = answers.timeline;
+  const budget = answers.budget;
+  const success = answers.success;
+
+  // Calculate readiness score
+  let score = 0;
+  const maxAssets = 8;
+  score += (assets.length / maxAssets) * 40; // Asset completeness = 40%
+
+  // Stage bonus
+  if (stage === 'live') score += 20;
+  else if (stage === 'soft-launch') score += 15;
+  else if (stage === 'production') score += 10;
+  else score += 5;
+
+  // Budget alignment
+  if (budget === 'enterprise') score += 15;
+  else if (budget === 'scale') score += 12;
+  else if (budget === 'growth') score += 10;
+  else if (budget === 'starter') score += 7;
+  else score += 3;
+
+  // Timeline realism
+  if (timeline === '3-6-months' || timeline === '6-12-months') score += 15;
+  else if (timeline === '1-3-months') score += 10;
+  else if (timeline === '12-plus') score += 12;
+  else score += 5;
+
+  // Fewer challenges = higher readiness
+  score += Math.max(0, 10 - challenges.length) * 1;
+
+  score = Math.min(100, Math.round(score));
+
+  // Determine readiness level
+  let readinessLevel, readinessDesc;
+  if (score >= 75) {
+    readinessLevel = 'High Readiness';
+    readinessDesc = 'You have strong foundations in place. Focus on optimization and scaling.';
+  } else if (score >= 50) {
+    readinessLevel = 'Moderate Readiness';
+    readinessDesc = 'Good progress, but critical gaps need addressing before you scale.';
+  } else if (score >= 30) {
+    readinessLevel = 'Building Phase';
+    readinessDesc = 'Several foundational elements need attention. Strategic planning now will pay dividends.';
+  } else {
+    readinessLevel = 'Early Stage';
+    readinessDesc = 'Significant groundwork needed. The good news: getting strategy right now prevents costly pivots later.';
+  }
+
+  // Generate roadmap based on gaps
+  const missingAssets = ['brand-positioning','narrative','creative','community','partnerships','ua-strategy','analytics','budget-plan'].filter(a => !assets.includes(a));
+
+  const roadmapPhases = [];
+  const phaseNames = ['Phase 1', 'Phase 2', 'Phase 3', 'Phase 4'];
+  let phaseIdx = 0;
+
+  // First: Brand foundations
+  if (missingAssets.includes('brand-positioning') || missingAssets.includes('narrative')) {
+    roadmapPhases.push({
+      phase: phaseNames[phaseIdx++],
+      title: 'Brand & Narrative Foundation',
+      desc: 'Define your positioning, audience personas, and core narrative. This is the bedrock everything else builds on.'
+    });
+  }
+
+  // Second: Creative & content
+  if (missingAssets.includes('creative') || missingAssets.includes('community')) {
+    roadmapPhases.push({
+      phase: phaseNames[phaseIdx++],
+      title: 'Creative Development & Community',
+      desc: 'Build your visual identity system, key art, app store assets, and begin community building.'
+    });
+  }
+
+  // Third: Partnerships & distribution
+  if (missingAssets.includes('partnerships') || challenges.includes('partnerships') || challenges.includes('international')) {
+    roadmapPhases.push({
+      phase: phaseNames[phaseIdx++],
+      title: 'Strategic Partnerships & Distribution',
+      desc: 'Identify and secure key partnerships, licensing opportunities, and distribution channels.'
+    });
+  }
+
+  // Fourth: Growth
+  if (missingAssets.includes('ua-strategy') || missingAssets.includes('analytics') || challenges.includes('ua-costs') || challenges.includes('retention')) {
+    roadmapPhases.push({
+      phase: phaseNames[phaseIdx++],
+      title: 'Growth Engine & Optimization',
+      desc: 'Launch UA campaigns, implement analytics, optimize funnels, and build sustainable growth loops.'
+    });
+  }
+
+  if (roadmapPhases.length === 0) {
+    roadmapPhases.push({
+      phase: 'Phase 1',
+      title: 'Optimize & Scale',
+      desc: 'You have strong foundations. Focus on testing, iterating, and scaling what\'s working across all channels.'
+    });
+  }
+
+  // Generate risks
+  const risks = [];
+  if (stage === 'pre-production' && (timeline === 'asap' || timeline === '1-3-months')) {
+    risks.push('Aggressive timeline for pre-production stage. Marketing foundations take time to build right.');
+  }
+  if (budget === 'bootstrap' && challenges.includes('ua-costs')) {
+    risks.push('Limited budget combined with UA cost concerns requires creative organic and partnership-driven strategies.');
+  }
+  if (!assets.includes('brand-positioning') && stage !== 'pre-production') {
+    risks.push('No brand positioning in place while already in development. Risk of misaligned marketing when you need to scale.');
+  }
+  if (challenges.includes('market-fit') && (stage === 'soft-launch' || stage === 'live')) {
+    risks.push('Product-market fit uncertainty at your stage is critical. Consider allocating budget to validation before scaling spend.');
+  }
+  if (!assets.includes('analytics') && (stage === 'soft-launch' || stage === 'live')) {
+    risks.push('Missing analytics and attribution means you\'re flying blind. Any marketing spend without measurement is wasted.');
+  }
+  if (challenges.length >= 5) {
+    risks.push('Multiple concurrent challenges suggest a need for prioritized, phased approach rather than trying to solve everything simultaneously.');
+  }
+  if (audience === 'kids-under-6' && !assets.includes('partnerships')) {
+    risks.push('Children\'s products under 6 require parents as gatekeepers. Without partnerships, reaching the right audience is significantly harder.');
+  }
+
+  if (risks.length === 0) {
+    risks.push('Your setup is relatively strong. Main risk is complacency — continue testing and adapting as market conditions change.');
+  }
+
+  // Genre benchmarks
+  const benchmarks = {};
+  switch(genre) {
+    case 'casual-puzzle':
+      benchmarks.cpi = '$0.50-$2.00';
+      benchmarks.d7 = '25-35%';
+      benchmarks.arpu = '$0.05-$0.15/day';
+      break;
+    case 'kids-educational':
+      benchmarks.cpi = '$1.50-$4.00';
+      benchmarks.d7 = '20-30%';
+      benchmarks.arpu = '$0.03-$0.10/day';
+      break;
+    case 'mid-core':
+      benchmarks.cpi = '$2.00-$8.00';
+      benchmarks.d7 = '15-25%';
+      benchmarks.arpu = '$0.10-$0.50/day';
+      break;
+    case 'family-entertainment':
+      benchmarks.cpi = '$1.00-$3.50';
+      benchmarks.d7 = '20-35%';
+      benchmarks.arpu = '$0.04-$0.12/day';
+      break;
+    case 'creative-sandbox':
+      benchmarks.cpi = '$1.00-$3.00';
+      benchmarks.d7 = '30-45%';
+      benchmarks.arpu = '$0.05-$0.15/day';
+      break;
+    default:
+      benchmarks.cpi = '$1.00-$5.00';
+      benchmarks.d7 = '20-30%';
+      benchmarks.arpu = '$0.05-$0.20/day';
+  }
+
+  // Package recommendation
+  let packageName, packageDesc, packagePriorities;
+  if (score < 35 || stage === 'pre-production') {
+    packageName = 'Strategic Foundation';
+    packageDesc = 'Build the brand, narrative, and GTM framework from the ground up before spending on growth.';
+    packagePriorities = ['Brand positioning & audience strategy', 'Narrative framework & IP potential', 'Go-to-market roadmap', 'Creative direction & guidelines', 'Partnership opportunity mapping'];
+  } else if (score < 65 || stage === 'production') {
+    packageName = 'Launch Accelerator';
+    packageDesc = 'Close critical gaps and build a launch-ready marketing stack in time for your milestone.';
+    packagePriorities = ['Gap analysis & priority action plan', 'Creative asset development', 'UA channel strategy & testing plan', 'Community seeding & partnerships', 'Launch timeline & contingency planning'];
+  } else {
+    packageName = 'Growth Optimizer';
+    packageDesc = 'Maximize performance across all channels with an integrated growth strategy.';
+    packagePriorities = ['Full-funnel performance audit', 'Creative testing framework', 'Channel mix optimization', 'Retention & engagement strategy', 'Scaling playbook & benchmarking'];
+  }
+
+  // Next steps
+  const nextSteps = [
+    { title: 'Review This Brief', desc: 'Take a moment to review the analysis and recommendations. A PDF copy is available to download and share with your team.' },
+    { title: 'Book a Strategy Call', desc: 'Let\'s discuss your specific situation, validate these recommendations, and explore how I can help execute.' },
+    { title: 'Receive a Custom Proposal', desc: 'After our call, I\'ll send a tailored proposal with specific scope, timeline, and investment for your engagement.' },
+    { title: 'Start Moving', desc: 'We begin with a focused strategy sprint to address your most critical priorities first.' },
+  ];
+
+  // Render results
+  const container = document.getElementById('resultsContainer');
+  container.innerHTML = `
+    <div class="results-header">
+      <p class="section-label">Your Personalized Brief</p>
+      <h2>GTM Readiness Report</h2>
+      <p>${answers['contact-info']?.company ? `For ${answers['contact-info'].company}` : ''}</p>
+    </div>
+
+    <div class="readiness-score">
+      <div class="score-circle">
+        <svg viewBox="0 0 120 120">
+          <circle class="score-circle-bg" cx="60" cy="60" r="52"/>
+          <circle class="score-circle-fill" id="scoreCircle" cx="60" cy="60" r="52"/>
+        </svg>
+        <span class="score-number" id="scoreNumber">0</span>
+      </div>
+      <div class="score-details">
+        <h3>${readinessLevel}</h3>
+        <p>${readinessDesc}</p>
+      </div>
+    </div>
+
+    <div class="results-section">
+      <h3 class="results-section-title"><span>&#9656;</span> Recommended Roadmap</h3>
+      <ul class="roadmap-list">
+        ${roadmapPhases.map(r => `
+          <li class="roadmap-item">
+            <span class="roadmap-phase">${r.phase}</span>
+            <div class="roadmap-content">
+              <h4>${r.title}</h4>
+              <p>${r.desc}</p>
+            </div>
+          </li>
+        `).join('')}
+      </ul>
+    </div>
+
+    <div class="results-section">
+      <h3 class="results-section-title"><span>&#9888;</span> Key Risks to Address</h3>
+      ${risks.map(r => `
+        <div class="risk-item">
+          <span class="risk-icon">&#9679;</span>
+          <p>${r}</p>
+        </div>
+      `).join('')}
+    </div>
+
+    <div class="results-section">
+      <h3 class="results-section-title"><span>&#9656;</span> Category Benchmarks</h3>
+      <div class="benchmark-grid">
+        <div class="benchmark-item">
+          <div class="benchmark-value">${benchmarks.cpi}</div>
+          <div class="benchmark-label">Avg. CPI Range</div>
+        </div>
+        <div class="benchmark-item">
+          <div class="benchmark-value">${benchmarks.d7}</div>
+          <div class="benchmark-label">Day 7 Retention</div>
+        </div>
+        <div class="benchmark-item">
+          <div class="benchmark-value">${benchmarks.arpu}</div>
+          <div class="benchmark-label">ARPU Range</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="results-section">
+      <h3 class="results-section-title"><span>&#9733;</span> Recommended Package</h3>
+      <div class="package-card">
+        <h4>${packageName}</h4>
+        <p>${packageDesc}</p>
+        <ul class="package-priorities">
+          ${packagePriorities.map(p => `<li>${p}</li>`).join('')}
+        </ul>
+      </div>
+    </div>
+
+    <div class="results-section">
+      <h3 class="results-section-title"><span>&#9656;</span> Your Next Steps</h3>
+      <ul class="next-steps-list">
+        ${nextSteps.map((s, i) => `
+          <li class="next-step-item">
+            <span class="next-step-num">${i + 1}</span>
+            <div>
+              <h4>${s.title}</h4>
+              <p>${s.desc}</p>
+            </div>
+          </li>
+        `).join('')}
+      </ul>
+    </div>
+
+    <div class="results-actions">
+      <button class="btn-download" onclick="downloadPDF()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download PDF Brief
+      </button>
+      <a href="#contact" class="btn-secondary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Book a Strategy Call
+      </a>
+    </div>
+  `;
+
+  // Show results, hide form
+  document.getElementById('assessmentForm').style.display = 'none';
+  container.classList.add('active');
+
+  // Animate score
+  setTimeout(() => {
+    const circle = document.getElementById('scoreCircle');
+    const circumference = 2 * Math.PI * 52;
+    const offset = circumference - (score / 100) * circumference;
+    circle.style.strokeDashoffset = offset;
+
+    // Animate number
+    let current = 0;
+    const interval = setInterval(() => {
+      current += 1;
+      document.getElementById('scoreNumber').textContent = current;
+      if (current >= score) clearInterval(interval);
+    }, 20);
+  }, 300);
+
+  // Send email notification (mailto fallback)
+  sendAssessmentEmail();
+
+  // Scroll to results
+  document.getElementById('assessment').scrollIntoView({ behavior: 'smooth' });
+}
+
+function sendAssessmentEmail() {
+  const contact = answers['contact-info'] || {};
+  const labelMap = {};
+  assessmentSteps.forEach(step => {
+    if (step.options) {
+      step.options.forEach(opt => {
+        labelMap[opt.value] = opt.label;
+      });
+    }
+  });
+
+  const subject = encodeURIComponent(`GTM Assessment: ${contact.company || contact.name || 'New Submission'}`);
+  const body = encodeURIComponent(
+    `GTM READINESS ASSESSMENT SUBMISSION\n` +
+    `=====================================\n\n` +
+    `Contact: ${contact.name || 'N/A'}\n` +
+    `Email: ${contact.email || 'N/A'}\n` +
+    `Company: ${contact.company || 'N/A'}\n\n` +
+    `RESPONSES:\n` +
+    `Stage: ${labelMap[answers.stage] || answers.stage}\n` +
+    `Genre: ${labelMap[answers.genre] || answers.genre}\n` +
+    `Monetization: ${labelMap[answers.monetization] || answers.monetization}\n` +
+    `Audience: ${labelMap[answers.audience] || answers.audience}\n` +
+    `Challenges: ${(answers.challenges || []).map(c => labelMap[c] || c).join(', ')}\n` +
+    `Assets in Place: ${(answers.assets || []).map(a => labelMap[a] || a).join(', ')}\n` +
+    `Timeline: ${labelMap[answers.timeline] || answers.timeline}\n` +
+    `Budget: ${labelMap[answers.budget] || answers.budget}\n` +
+    `Success Metric: ${labelMap[answers.success] || answers.success}\n`
+  );
+
+  // Create hidden mailto link (doesn't auto-open, just prepares)
+  const mailLink = document.createElement('a');
+  mailLink.href = `mailto:hello@transparenteyeball.fi?subject=${subject}&body=${body}`;
+  mailLink.style.display = 'none';
+  document.body.appendChild(mailLink);
+  // Note: We don't auto-click — the PDF download can include the submission data
+}
+
+// ========== PDF GENERATION ==========
+function downloadPDF() {
+  const contact = answers['contact-info'] || {};
+  const stage = answers.stage;
+  const genre = answers.genre;
+
+  const labelMap = {};
+  assessmentSteps.forEach(step => {
+    if (step.options) {
+      step.options.forEach(opt => {
+        labelMap[opt.value] = opt.label;
+      });
+    }
+  });
+
+  // Calculate score again
+  let score = 0;
+  const assets = answers.assets || [];
+  score += (assets.length / 8) * 40;
+  if (stage === 'live') score += 20;
+  else if (stage === 'soft-launch') score += 15;
+  else if (stage === 'production') score += 10;
+  else score += 5;
+  if (answers.budget === 'enterprise') score += 15;
+  else if (answers.budget === 'scale') score += 12;
+  else if (answers.budget === 'growth') score += 10;
+  else if (answers.budget === 'starter') score += 7;
+  else score += 3;
+  if (answers.timeline === '3-6-months' || answers.timeline === '6-12-months') score += 15;
+  else if (answers.timeline === '1-3-months') score += 10;
+  else if (answers.timeline === '12-plus') score += 12;
+  else score += 5;
+  score += Math.max(0, 10 - (answers.challenges || []).length);
+  score = Math.min(100, Math.round(score));
+
+  // Build PDF content as HTML for printing
+  const pdfContent = `
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>GTM Readiness Brief — ${contact.company || 'Transparent Eyeball'}</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; background: #fff; color: #1a1a2e; padding: 48px; line-height: 1.6; max-width: 800px; margin: 0 auto; }
+  .header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid #b8a99a; padding-bottom: 24px; margin-bottom: 32px; }
+  .logo-area h1 { font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700; }
+  .logo-area p { color: #666; font-size: 12px; }
+  .brief-for { text-align: right; }
+  .brief-for h2 { font-family: 'Space Grotesk', sans-serif; font-size: 14px; color: #666; font-weight: 500; }
+  .brief-for p { font-size: 14px; font-weight: 600; }
+  .score-bar { background: #f0f0f0; border-radius: 20px; height: 24px; margin: 16px 0; position: relative; overflow: hidden; }
+  .score-fill { height: 100%; background: linear-gradient(90deg, #b8a99a, #96877a); border-radius: 20px; }
+  .score-text { display: flex; justify-content: space-between; font-size: 13px; color: #666; }
+  .section { margin-bottom: 28px; }
+  .section h3 { font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 600; margin-bottom: 12px; padding-bottom: 6px; border-bottom: 1px solid #eee; }
+  .roadmap-item { display: flex; gap: 16px; margin-bottom: 12px; padding: 12px; background: #fafafa; border-radius: 8px; }
+  .phase-label { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12px; color: #666; min-width: 60px; }
+  .roadmap-title { font-weight: 600; font-size: 14px; }
+  .roadmap-desc { font-size: 13px; color: #555; }
+  .risk { padding: 10px 14px; background: #fff5f5; border-left: 3px solid #ff5050; margin-bottom: 8px; font-size: 13px; color: #555; border-radius: 0 6px 6px 0; }
+  .benchmarks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .bench { text-align: center; padding: 16px; background: #fafafa; border-radius: 8px; }
+  .bench-value { font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 700; color: #1a1a2e; }
+  .bench-label { font-size: 11px; color: #888; }
+  .package { padding: 20px; border: 2px solid #b8a99a; border-radius: 10px; background: #f5f0eb; }
+  .package h4 { font-family: 'Space Grotesk', sans-serif; font-size: 16px; margin-bottom: 4px; }
+  .package p { font-size: 13px; color: #555; margin-bottom: 12px; }
+  .package li { font-size: 13px; margin-left: 16px; margin-bottom: 4px; }
+  .next-step { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid #eee; }
+  .step-num { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 16px; color: #96877a; min-width: 24px; }
+  .step-title { font-weight: 600; font-size: 13px; }
+  .step-desc { font-size: 12px; color: #666; }
+  .footer { margin-top: 40px; padding-top: 20px; border-top: 2px solid #b8a99a; text-align: center; font-size: 12px; color: #888; }
+  .footer a { color: #1a1a2e; font-weight: 600; }
+  .summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 20px; font-size: 13px; }
+  .summary-item { padding: 8px 12px; background: #fafafa; border-radius: 6px; }
+  .summary-label { color: #888; font-size: 11px; }
+  @media print { body { padding: 24px; } }
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="logo-area">
+    <h1>&#x25CE; Transparent Eyeball</h1>
+    <p>GTM Readiness Brief</p>
+  </div>
+  <div class="brief-for">
+    <h2>Prepared For</h2>
+    <p>${contact.name || 'N/A'}</p>
+    <p style="color:#666;font-size:12px;">${contact.company || ''}</p>
+    <p style="color:#888;font-size:11px;">${new Date().toLocaleDateString('en-US', {year:'numeric',month:'long',day:'numeric'})}</p>
+  </div>
+</div>
+
+<div class="section">
+  <h3>Readiness Score: ${score}/100</h3>
+  <div class="score-bar"><div class="score-fill" style="width:${score}%"></div></div>
+  <div class="score-text"><span>${score >= 75 ? 'High Readiness' : score >= 50 ? 'Moderate Readiness' : score >= 30 ? 'Building Phase' : 'Early Stage'}</span><span>${score}%</span></div>
+</div>
+
+<div class="section">
+  <h3>Your Profile</h3>
+  <div class="summary-grid">
+    <div class="summary-item"><div class="summary-label">Stage</div>${labelMap[answers.stage] || answers.stage}</div>
+    <div class="summary-item"><div class="summary-label">Category</div>${labelMap[answers.genre] || answers.genre}</div>
+    <div class="summary-item"><div class="summary-label">Monetization</div>${labelMap[answers.monetization] || answers.monetization}</div>
+    <div class="summary-item"><div class="summary-label">Audience</div>${labelMap[answers.audience] || answers.audience}</div>
+    <div class="summary-item"><div class="summary-label">Timeline</div>${labelMap[answers.timeline] || answers.timeline}</div>
+    <div class="summary-item"><div class="summary-label">Budget</div>${labelMap[answers.budget] || answers.budget}</div>
+    <div class="summary-item"><div class="summary-label">Success Metric</div>${labelMap[answers.success] || answers.success}</div>
+    <div class="summary-item"><div class="summary-label">Challenges</div>${(answers.challenges||[]).map(c=>labelMap[c]||c).join(', ')}</div>
+  </div>
+</div>
+
+<div class="section" id="pdf-roadmap"></div>
+<div class="section" id="pdf-risks"></div>
+
+<div class="section">
+  <h3>Category Benchmarks</h3>
+  <div class="benchmarks" id="pdf-benchmarks"></div>
+</div>
+
+<div class="section" id="pdf-package"></div>
+<div class="section" id="pdf-nextsteps"></div>
+
+<div class="footer">
+  <p><strong>Transparent Eyeball</strong> — Full-Stack Marketing Consulting</p>
+  <p>hello@transparenteyeball.fi</p>
+</div>
+
+</body>
+</html>`;
+
+  // Open new window with PDF content and trigger print
+  const printWindow = window.open('', '_blank');
+  printWindow.document.write(pdfContent);
+
+  // Now populate dynamic sections
+  const resultsEl = document.getElementById('resultsContainer');
+
+  // Clone roadmap
+  const roadmapItems = resultsEl.querySelectorAll('.roadmap-item');
+  let roadmapHTML = '<h3>Recommended Roadmap</h3>';
+  roadmapItems.forEach(item => {
+    const phase = item.querySelector('.roadmap-phase').textContent;
+    const title = item.querySelector('h4').textContent;
+    const desc = item.querySelector('p').textContent;
+    roadmapHTML += `<div class="roadmap-item"><span class="phase-label">${phase}</span><div><div class="roadmap-title">${title}</div><div class="roadmap-desc">${desc}</div></div></div>`;
+  });
+  printWindow.document.getElementById('pdf-roadmap').innerHTML = roadmapHTML;
+
+  // Clone risks
+  const riskItems = resultsEl.querySelectorAll('.risk-item p');
+  let risksHTML = '<h3>Key Risks</h3>';
+  riskItems.forEach(r => { risksHTML += `<div class="risk">${r.textContent}</div>`; });
+  printWindow.document.getElementById('pdf-risks').innerHTML = risksHTML;
+
+  // Benchmarks
+  const benchItems = resultsEl.querySelectorAll('.benchmark-item');
+  let benchHTML = '';
+  benchItems.forEach(b => {
+    benchHTML += `<div class="bench"><div class="bench-value">${b.querySelector('.benchmark-value').textContent}</div><div class="bench-label">${b.querySelector('.benchmark-label').textContent}</div></div>`;
+  });
+  printWindow.document.getElementById('pdf-benchmarks').innerHTML = benchHTML;
+
+  // Package
+  const pkg = resultsEl.querySelector('.package-card');
+  const pkgTitle = pkg.querySelector('h4').textContent;
+  const pkgDesc = pkg.querySelector('p').textContent;
+  const pkgItems = pkg.querySelectorAll('.package-priorities li');
+  let pkgHTML = `<h3>Recommended Package</h3><div class="package"><h4>${pkgTitle}</h4><p>${pkgDesc}</p><ul>`;
+  pkgItems.forEach(li => { pkgHTML += `<li>${li.textContent}</li>`; });
+  pkgHTML += '</ul></div>';
+  printWindow.document.getElementById('pdf-package').innerHTML = pkgHTML;
+
+  // Next steps
+  const steps = resultsEl.querySelectorAll('.next-step-item');
+  let stepsHTML = '<h3>Next Steps</h3>';
+  steps.forEach((s, i) => {
+    stepsHTML += `<div class="next-step"><span class="step-num">${i+1}</span><div><div class="step-title">${s.querySelector('h4').textContent}</div><div class="step-desc">${s.querySelector('p').textContent}</div></div></div>`;
+  });
+  printWindow.document.getElementById('pdf-nextsteps').innerHTML = stepsHTML;
+
+  printWindow.document.close();
+
+  setTimeout(() => {
+    printWindow.print();
+  }, 500);
+}
+
+// ========== INITIALIZE ==========
+renderStep(0);
+</script>
+</body>
+</html>
