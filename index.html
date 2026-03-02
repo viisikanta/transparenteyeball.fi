@@ -7,26 +7,30 @@
 <meta name="description" content="Transparent Eyeball offers end-to-end marketing consulting for mobile games and family apps. From brand strategy through growth marketing — one senior partner, zero gaps.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Cormorant+SC:wght@400;500;600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
 <style>
 /* ===== RESET & BASE ===== */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --bg-primary: #0e0c0a;
-  --bg-secondary: #151210;
-  --bg-tertiary: #1e1a17;
-  --bg-card: #171412;
-  --text-primary: #e8e2da;
-  --text-secondary: #a89e94;
-  --text-muted: #706860;
-  --accent: #b8a99a;
-  --accent-dim: rgba(184, 169, 154, 0.12);
-  --accent-glow: rgba(184, 169, 154, 0.06);
-  --border: rgba(255, 245, 235, 0.06);
-  --border-hover: rgba(255, 245, 235, 0.12);
-  --font-display: 'Space Grotesk', sans-serif;
-  --font-body: 'Inter', sans-serif;
+  --bg-primary: #141414;
+  --bg-secondary: #1a1a1a;
+  --bg-tertiary: #222222;
+  --bg-card: #1e1e1e;
+  --text-primary: #f2ede4;
+  --text-secondary: #8a817c;
+  --text-muted: #5c554e;
+  --accent: #b08d57;
+  --accent-dim: rgba(176, 141, 87, 0.12);
+  --accent-glow: rgba(176, 141, 87, 0.06);
+  --border: #3a3632;
+  --border-hover: rgba(176, 141, 87, 0.25);
+  --umber: #6b4226;
+  --walnut: #3d2b1f;
+  --font-display: 'Cormorant Garamond', serif;
+  --font-label: 'Cormorant SC', serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
 }
@@ -89,16 +93,16 @@ nav .container {
   gap: 12px;
 }
 
-.nav-logo svg {
+.nav-logo svg, .nav-logo img {
   width: 32px;
   height: 32px;
 }
 
 .nav-logo span {
   font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 1rem;
-  letter-spacing: -0.02em;
+  font-weight: 300;
+  font-size: 1.05rem;
+  letter-spacing: 0.01em;
 }
 
 .nav-links {
@@ -109,27 +113,34 @@ nav .container {
 }
 
 .nav-links a {
-  font-size: 0.875rem;
+  font-family: var(--font-label);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
   color: var(--text-secondary);
   transition: color 0.2s;
-  font-weight: 400;
 }
 
-.nav-links a:hover { color: var(--text-primary); }
+.nav-links a:hover { color: var(--accent); }
 
 .nav-cta {
-  background: var(--accent) !important;
-  color: var(--bg-primary) !important;
+  background: transparent !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--umber) !important;
   padding: 10px 20px;
-  border-radius: 6px;
+  border-radius: 2px;
+  font-family: var(--font-label);
   font-weight: 600;
-  font-size: 0.875rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
   transition: all 0.2s;
 }
 
 .nav-cta:hover {
-  opacity: 0.9;
-  transform: translateY(-1px);
+  background: var(--umber) !important;
+  border-color: var(--umber) !important;
 }
 
 .mobile-menu-btn {
@@ -167,7 +178,8 @@ nav .container {
 
 .mobile-nav a {
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-size: 1.8rem;
+  font-weight: 300;
   color: var(--text-secondary);
   transition: color 0.2s;
 }
@@ -215,28 +227,30 @@ nav .container {
   animation: fadeUp 0.8s var(--ease-out) 0.2s forwards;
 }
 
-.hero-logo svg {
-  width: 100px;
-  height: 100px;
+.hero-logo svg, .hero-logo img {
+  width: 240px;
+  height: 240px;
 }
 
 .hero h1 {
   font-family: var(--font-display);
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 1.1;
-  margin-bottom: 8px;
+  font-size: clamp(2.8rem, 7vw, 5rem);
+  font-weight: 300;
+  letter-spacing: -0.015em;
+  line-height: 1.08;
+  margin-bottom: 12px;
   opacity: 0;
   animation: fadeUp 0.8s var(--ease-out) 0.35s forwards;
 }
 
 .hero-tagline {
-  font-size: clamp(1rem, 2vw, 1.25rem);
-  color: var(--accent);
-  font-weight: 500;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  color: var(--text-secondary);
+  font-weight: 300;
   margin-bottom: 24px;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
   opacity: 0;
   animation: fadeUp 0.8s var(--ease-out) 0.5s forwards;
 }
@@ -255,21 +269,24 @@ nav .container {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: var(--accent);
-  color: var(--bg-primary);
-  padding: 16px 32px;
-  border-radius: 8px;
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--umber);
+  padding: 16px 36px;
+  border-radius: 2px;
+  font-family: var(--font-label);
   font-weight: 600;
-  font-size: 1.05rem;
-  letter-spacing: -0.01em;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
   transition: all 0.3s var(--ease-out);
   opacity: 0;
   animation: fadeUp 0.8s var(--ease-out) 0.8s forwards;
 }
 
 .hero-cta:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(184, 169, 154, 0.2);
+  background: var(--umber);
+  border-color: var(--umber);
 }
 
 .hero-cta svg {
@@ -288,9 +305,10 @@ section {
 }
 
 .section-label {
-  font-size: 0.75rem;
+  font-family: var(--font-label);
+  font-size: 0.7rem;
   font-weight: 600;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--accent);
   margin-bottom: 16px;
@@ -298,16 +316,17 @@ section {
 
 .section-title {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 700;
-  letter-spacing: -0.03em;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 300;
+  letter-spacing: -0.01em;
   line-height: 1.15;
   margin-bottom: 16px;
 }
 
 .section-subtitle {
   color: var(--text-secondary);
-  font-size: 1.125rem;
+  font-size: 1.05rem;
+  font-weight: 300;
   line-height: 1.7;
   max-width: 600px;
 }
@@ -368,14 +387,15 @@ section {
   border-radius: 50%;
   background: var(--accent);
   border: 3px solid var(--bg-secondary);
-  box-shadow: 0 0 20px rgba(184, 169, 154, 0.25);
+  box-shadow: 0 0 20px rgba(176, 141, 87, 0.25);
 }
 
 .continuum-label {
-  font-family: var(--font-display);
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
+  font-family: var(--font-label);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
   text-align: center;
   white-space: nowrap;
   color: var(--text-primary);
@@ -389,9 +409,9 @@ section {
 }
 
 .capability-card {
-  background: var(--bg-card);
+  background: var(--bg-tertiary);
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: 6px;
   padding: 28px 20px;
   transition: all 0.3s var(--ease-out);
   position: relative;
@@ -420,7 +440,7 @@ section {
 .capability-icon {
   width: 40px;
   height: 40px;
-  border-radius: 8px;
+  border-radius: 4px;
   background: var(--accent-dim);
   display: flex;
   align-items: center;
@@ -431,10 +451,10 @@ section {
 
 .capability-card h3 {
   font-family: var(--font-display);
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 1.15rem;
+  font-weight: 500;
   margin-bottom: 8px;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
 }
 
 .capability-card p {
@@ -448,7 +468,7 @@ section {
   margin-top: 48px;
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: 6px;
   padding: 32px 40px;
   display: flex;
   align-items: center;
@@ -469,8 +489,8 @@ section {
 
 .integrated-callout h3 {
   font-family: var(--font-display);
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 1.2rem;
+  font-weight: 500;
   margin-bottom: 4px;
 }
 
@@ -546,9 +566,9 @@ section {
 
 /* Assessment card */
 .assessment-card {
-  background: var(--bg-card);
+  background: var(--bg-tertiary);
   border: 1px solid var(--border);
-  border-radius: 16px;
+  border-radius: 6px;
   padding: 48px 40px;
   min-height: 400px;
   display: flex;
@@ -557,10 +577,10 @@ section {
 
 .assessment-question {
   font-family: var(--font-display);
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: 1.6rem;
+  font-weight: 500;
   margin-bottom: 8px;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
 }
 
 .assessment-hint {
@@ -586,7 +606,7 @@ section {
   gap: 14px;
   padding: 16px 20px;
   border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: 6px;
   cursor: pointer;
   transition: all 0.2s;
   user-select: none;
@@ -672,7 +692,7 @@ section {
   width: 100%;
   padding: 16px 20px;
   border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: 6px;
   background: var(--bg-tertiary);
   color: var(--text-primary);
   font-size: 1rem;
@@ -705,7 +725,7 @@ section {
   width: 100%;
   padding: 16px 20px;
   border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: 6px;
   background: var(--bg-tertiary);
   color: var(--text-primary);
   font-size: 1rem;
@@ -746,9 +766,12 @@ section {
   background: var(--accent);
   color: var(--bg-primary);
   padding: 12px 28px;
-  border-radius: 8px;
+  border-radius: 2px;
+  font-family: var(--font-label);
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -756,8 +779,7 @@ section {
 }
 
 .btn-next:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 16px rgba(184, 169, 154, 0.2);
+  opacity: 0.9;
 }
 
 .btn-next:disabled {
@@ -788,8 +810,8 @@ section {
 
 .results-header h2 {
   font-family: var(--font-display);
-  font-size: 2rem;
-  font-weight: 700;
+  font-size: 2.2rem;
+  font-weight: 300;
   margin-bottom: 8px;
 }
 
@@ -807,7 +829,7 @@ section {
   padding: 32px;
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: 16px;
+  border-radius: 6px;
 }
 
 .score-circle {
@@ -845,13 +867,13 @@ section {
   transform: translate(-50%, -50%);
   font-family: var(--font-display);
   font-size: 2rem;
-  font-weight: 700;
+  font-weight: 300;
 }
 
 .score-details h3 {
   font-family: var(--font-display);
-  font-size: 1.25rem;
-  font-weight: 600;
+  font-size: 1.35rem;
+  font-weight: 500;
   margin-bottom: 4px;
 }
 
@@ -867,8 +889,8 @@ section {
 
 .results-section-title {
   font-family: var(--font-display);
-  font-size: 1.15rem;
-  font-weight: 600;
+  font-size: 1.25rem;
+  font-weight: 500;
   margin-bottom: 16px;
   display: flex;
   align-items: center;
@@ -889,14 +911,15 @@ section {
   padding: 16px 20px;
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: 6px;
   margin-bottom: 10px;
 }
 
 .roadmap-phase {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 0.75rem;
+  font-family: var(--font-label);
+  font-weight: 500;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
   color: var(--accent);
   white-space: nowrap;
   padding-top: 2px;
@@ -922,7 +945,7 @@ section {
   padding: 14px 20px;
   background: rgba(255, 80, 80, 0.05);
   border: 1px solid rgba(255, 80, 80, 0.1);
-  border-radius: 10px;
+  border-radius: 6px;
   margin-bottom: 8px;
 }
 
@@ -949,20 +972,22 @@ section {
   padding: 20px;
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: 6px;
   text-align: center;
 }
 
 .benchmark-value {
   font-family: var(--font-display);
   font-size: 1.5rem;
-  font-weight: 700;
+  font-weight: 300;
   color: var(--accent);
   margin-bottom: 4px;
 }
 
 .benchmark-label {
-  font-size: 0.8rem;
+  font-family: var(--font-label);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
   color: var(--text-muted);
 }
 
@@ -971,7 +996,7 @@ section {
   padding: 28px;
   background: var(--bg-card);
   border: 2px solid var(--accent);
-  border-radius: 12px;
+  border-radius: 6px;
   position: relative;
   overflow: hidden;
 }
@@ -984,7 +1009,7 @@ section {
   background: var(--accent);
   color: var(--bg-primary);
   font-size: 0.65rem;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.1em;
   padding: 4px 40px;
   transform: rotate(45deg);
@@ -992,8 +1017,8 @@ section {
 
 .package-card h4 {
   font-family: var(--font-display);
-  font-size: 1.2rem;
-  font-weight: 600;
+  font-size: 1.3rem;
+  font-weight: 500;
   margin-bottom: 8px;
 }
 
@@ -1045,8 +1070,8 @@ section {
 
 .next-step-num {
   font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1.25rem;
+  font-weight: 300;
+  font-size: 1.5rem;
   color: var(--accent);
   min-width: 32px;
 }
@@ -1078,15 +1103,17 @@ section {
   background: var(--accent);
   color: var(--bg-primary);
   padding: 14px 28px;
-  border-radius: 8px;
+  border-radius: 2px;
+  font-family: var(--font-label);
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
   transition: all 0.2s;
 }
 
 .btn-download:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(184, 169, 154, 0.2);
+  opacity: 0.9;
 }
 
 .btn-secondary {
@@ -1096,9 +1123,12 @@ section {
   background: transparent;
   color: var(--text-primary);
   padding: 14px 28px;
-  border-radius: 8px;
+  border-radius: 2px;
+  font-family: var(--font-label);
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
   border: 1px solid var(--border);
   transition: all 0.2s;
 }
@@ -1174,7 +1204,7 @@ section {
 .about-image-frame {
   aspect-ratio: 4/5;
   background: var(--bg-tertiary);
-  border-radius: 16px;
+  border-radius: 6px;
   border: 1px solid var(--border);
   display: flex;
   align-items: center;
@@ -1202,7 +1232,7 @@ section {
 .about-initials {
   font-family: var(--font-display);
   font-size: 4rem;
-  font-weight: 700;
+  font-weight: 300;
   color: var(--accent);
   opacity: 0.3;
 }
@@ -1211,17 +1241,20 @@ section {
 
 .about-text h2 {
   font-family: var(--font-display);
-  font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: -0.03em;
+  font-size: 2.2rem;
+  font-weight: 300;
+  letter-spacing: -0.01em;
   margin-bottom: 6px;
 }
 
 .about-role {
+  font-family: var(--font-label);
   color: var(--accent);
   font-weight: 500;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
   margin-bottom: 24px;
-  font-size: 1rem;
 }
 
 .about-bio {
@@ -1245,13 +1278,13 @@ section {
   padding: 20px;
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: 6px;
 }
 
 .about-stat-value {
   font-family: var(--font-display);
   font-size: 1.5rem;
-  font-weight: 700;
+  font-weight: 300;
   color: var(--accent);
   margin-bottom: 4px;
 }
@@ -1277,8 +1310,8 @@ section {
 .contact-info h2 {
   font-family: var(--font-display);
   font-size: 2.5rem;
-  font-weight: 700;
-  letter-spacing: -0.03em;
+  font-weight: 300;
+  letter-spacing: -0.01em;
   margin-bottom: 16px;
 }
 
@@ -1300,7 +1333,7 @@ section {
 .contact-detail-icon {
   width: 40px;
   height: 40px;
-  border-radius: 8px;
+  border-radius: 4px;
   background: var(--accent-dim);
   display: flex;
   align-items: center;
@@ -1312,7 +1345,7 @@ section {
 .contact-form {
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: 16px;
+  border-radius: 6px;
   padding: 40px;
 }
 
@@ -1332,7 +1365,7 @@ section {
   width: 100%;
   padding: 14px 18px;
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: 4px;
   background: var(--bg-tertiary);
   color: var(--text-primary);
   font-size: 0.95rem;
@@ -1358,9 +1391,12 @@ textarea.form-input {
   background: var(--accent);
   color: var(--bg-primary);
   padding: 14px;
-  border-radius: 8px;
+  border-radius: 2px;
+  font-family: var(--font-label);
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
   transition: all 0.2s;
   display: flex;
   align-items: center;
@@ -1369,8 +1405,7 @@ textarea.form-input {
 }
 
 .form-submit:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 16px rgba(184, 169, 154, 0.2);
+  opacity: 0.9;
 }
 
 /* ===== FOOTER ===== */
@@ -1391,19 +1426,21 @@ footer {
   gap: 10px;
 }
 
-.footer-logo svg {
+.footer-logo svg, .footer-logo img {
   width: 24px;
   height: 24px;
 }
 
 .footer-logo span {
   font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 0.9rem;
+  font-weight: 300;
+  font-size: 0.95rem;
 }
 
 .footer-copy {
-  font-size: 0.8rem;
+  font-family: var(--font-label);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
   color: var(--text-muted);
 }
 
@@ -1559,7 +1596,7 @@ footer {
   right: 32px;
   background: var(--bg-card);
   border: 1px solid var(--accent);
-  border-radius: 10px;
+  border-radius: 6px;
   padding: 16px 24px;
   display: flex;
   align-items: center;
@@ -1583,22 +1620,7 @@ footer {
 <nav id="navbar">
   <div class="container">
     <a href="#" class="nav-logo">
-      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- Woodcut-style eye -->
-        <ellipse cx="20" cy="20" rx="18" ry="12" stroke="#e8e2da" stroke-width="1.5" fill="none"/>
-        <ellipse cx="20" cy="20" rx="15" ry="10" stroke="#e8e2da" stroke-width="0.8" fill="none"/>
-        <circle cx="20" cy="20" r="7" stroke="#e8e2da" stroke-width="1.2" fill="none"/>
-        <circle cx="20" cy="20" r="4" stroke="#e8e2da" stroke-width="1" fill="none"/>
-        <circle cx="20" cy="20" r="2" fill="#e8e2da"/>
-        <!-- Radiating lines from pupil -->
-        <line x1="20" y1="13" x2="20" y2="9" stroke="#e8e2da" stroke-width="0.7" stroke-linecap="round"/>
-        <line x1="24" y1="14" x2="26" y2="10" stroke="#e8e2da" stroke-width="0.7" stroke-linecap="round"/>
-        <line x1="27" y1="17" x2="30" y2="14" stroke="#e8e2da" stroke-width="0.7" stroke-linecap="round"/>
-        <line x1="16" y1="14" x2="14" y2="10" stroke="#e8e2da" stroke-width="0.7" stroke-linecap="round"/>
-        <line x1="13" y1="17" x2="10" y2="14" stroke="#e8e2da" stroke-width="0.7" stroke-linecap="round"/>
-        <!-- Upper lid detail -->
-        <path d="M5 20 Q12 10 20 8 Q28 10 35 20" stroke="#e8e2da" stroke-width="0.6" fill="none"/>
-      </svg>
+      <img src="logo-eye.svg" alt="Transparent Eyeball" style="width:32px;height:32px;">
       <span>Transparent Eyeball</span>
     </a>
     <ul class="nav-links">
@@ -1629,37 +1651,7 @@ footer {
 <!-- ===== HERO ===== -->
 <section class="hero" id="hero">
   <div class="hero-logo">
-    <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- Woodcut-style eye illustration -->
-      <!-- Outer eye shape - layered eyelids -->
-      <ellipse cx="60" cy="60" rx="54" ry="36" stroke="#e8e2da" stroke-width="1.8" fill="none"/>
-      <ellipse cx="60" cy="60" rx="48" ry="31" stroke="#e8e2da" stroke-width="1" fill="none" opacity="0.6"/>
-      <ellipse cx="60" cy="60" rx="42" ry="26" stroke="#e8e2da" stroke-width="0.8" fill="none" opacity="0.4"/>
-      <!-- Iris with concentric circles -->
-      <circle cx="60" cy="60" r="22" stroke="#e8e2da" stroke-width="1.5" fill="none"/>
-      <circle cx="60" cy="60" r="18" stroke="#e8e2da" stroke-width="0.8" fill="none" opacity="0.5"/>
-      <circle cx="60" cy="60" r="14" stroke="#e8e2da" stroke-width="1" fill="none"/>
-      <!-- Pupil -->
-      <circle cx="60" cy="60" r="8" fill="#e8e2da"/>
-      <circle cx="57" cy="57" r="2.5" fill="#0e0c0a"/>
-      <!-- Radiating lines from pupil (woodcut style) -->
-      <line x1="60" y1="38" x2="60" y2="26" stroke="#e8e2da" stroke-width="1" stroke-linecap="round"/>
-      <line x1="67" y1="39" x2="72" y2="28" stroke="#e8e2da" stroke-width="1" stroke-linecap="round"/>
-      <line x1="73" y1="43" x2="82" y2="34" stroke="#e8e2da" stroke-width="1" stroke-linecap="round"/>
-      <line x1="78" y1="50" x2="88" y2="44" stroke="#e8e2da" stroke-width="1" stroke-linecap="round"/>
-      <line x1="53" y1="39" x2="48" y2="28" stroke="#e8e2da" stroke-width="1" stroke-linecap="round"/>
-      <line x1="47" y1="43" x2="38" y2="34" stroke="#e8e2da" stroke-width="1" stroke-linecap="round"/>
-      <line x1="42" y1="50" x2="32" y2="44" stroke="#e8e2da" stroke-width="1" stroke-linecap="round"/>
-      <!-- Lower radiating lines -->
-      <line x1="60" y1="82" x2="60" y2="92" stroke="#e8e2da" stroke-width="0.8" stroke-linecap="round" opacity="0.5"/>
-      <line x1="67" y1="80" x2="72" y2="90" stroke="#e8e2da" stroke-width="0.8" stroke-linecap="round" opacity="0.5"/>
-      <line x1="53" y1="80" x2="48" y2="90" stroke="#e8e2da" stroke-width="0.8" stroke-linecap="round" opacity="0.5"/>
-      <!-- Upper eyelid detail curves -->
-      <path d="M12 60 Q30 30 60 24 Q90 30 108 60" stroke="#e8e2da" stroke-width="1.2" fill="none"/>
-      <path d="M18 58 Q35 34 60 28 Q85 34 102 58" stroke="#e8e2da" stroke-width="0.6" fill="none" opacity="0.4"/>
-      <!-- Lower eyelid detail -->
-      <path d="M12 60 Q30 88 60 94 Q90 88 108 60" stroke="#e8e2da" stroke-width="0.6" fill="none" opacity="0.3"/>
-    </svg>
+    <img src="logo.svg" alt="Transparent Eyeball" style="width:240px;height:240px;">
   </div>
   <h1>Transparent Eyeball</h1>
   <p class="hero-tagline">Full-Stack Marketing Consulting for Mobile Games & Family Apps</p>
@@ -1785,21 +1777,21 @@ footer {
       <div class="client-logo">
         <div class="client-logo-img">
           <svg viewBox="0 0 160 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <text x="80" y="32" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-weight="600" font-size="20" fill="#f0eff4">Sago Mini</text>
+            <text x="80" y="32" text-anchor="middle" font-family="Cormorant SC, Cormorant Garamond, Georgia, serif" font-weight="500" font-size="20" fill="#f2ede4" letter-spacing="2">Sago Mini</text>
           </svg>
         </div>
       </div>
       <div class="client-logo">
         <div class="client-logo-img">
           <svg viewBox="0 0 160 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <text x="80" y="32" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-weight="600" font-size="20" fill="#f0eff4">Toca Boca</text>
+            <text x="80" y="32" text-anchor="middle" font-family="Cormorant SC, Cormorant Garamond, Georgia, serif" font-weight="500" font-size="20" fill="#f2ede4" letter-spacing="2">Toca Boca</text>
           </svg>
         </div>
       </div>
       <div class="client-logo">
         <div class="client-logo-img">
           <svg viewBox="0 0 200 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <text x="100" y="32" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-weight="600" font-size="20" fill="#f0eff4">Adventure Club</text>
+            <text x="100" y="32" text-anchor="middle" font-family="Cormorant SC, Cormorant Garamond, Georgia, serif" font-weight="500" font-size="20" fill="#f2ede4" letter-spacing="2">Adventure Club</text>
           </svg>
         </div>
       </div>
@@ -1898,12 +1890,7 @@ footer {
   <div class="container">
     <div class="footer-content">
       <div class="footer-logo">
-        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <ellipse cx="20" cy="20" rx="18" ry="12" stroke="#e8e2da" stroke-width="1.2" fill="none"/>
-          <circle cx="20" cy="20" r="7" stroke="#e8e2da" stroke-width="1" fill="none"/>
-          <circle cx="20" cy="20" r="3" fill="#e8e2da"/>
-          <path d="M5 20 Q12 10 20 8 Q28 10 35 20" stroke="#e8e2da" stroke-width="0.8" fill="none"/>
-        </svg>
+        <img src="logo-eye.svg" alt="Transparent Eyeball" style="width:24px;height:24px;">
         <span>Transparent Eyeball</span>
       </div>
       <p class="footer-copy">&copy; 2026 Transparent Eyeball. All rights reserved.</p>
@@ -2630,39 +2617,39 @@ function downloadPDF() {
 <meta charset="UTF-8">
 <title>GTM Readiness Brief — ${contact.company || 'Transparent Eyeball'}</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Cormorant+SC:wght@400;500;600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=JetBrains+Mono:wght@300&display=swap');
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'Inter', sans-serif; background: #fff; color: #1a1a2e; padding: 48px; line-height: 1.6; max-width: 800px; margin: 0 auto; }
-  .header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid #b8a99a; padding-bottom: 24px; margin-bottom: 32px; }
-  .logo-area h1 { font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700; }
+  body { font-family: 'DM Sans', sans-serif; background: #fff; color: #1a1a1a; padding: 48px; line-height: 1.6; max-width: 800px; margin: 0 auto; font-weight: 300; }
+  .header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid #b08d57; padding-bottom: 24px; margin-bottom: 32px; }
+  .logo-area h1 { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 300; }
   .logo-area p { color: #666; font-size: 12px; }
   .brief-for { text-align: right; }
-  .brief-for h2 { font-family: 'Space Grotesk', sans-serif; font-size: 14px; color: #666; font-weight: 500; }
-  .brief-for p { font-size: 14px; font-weight: 600; }
-  .score-bar { background: #f0f0f0; border-radius: 20px; height: 24px; margin: 16px 0; position: relative; overflow: hidden; }
-  .score-fill { height: 100%; background: linear-gradient(90deg, #b8a99a, #96877a); border-radius: 20px; }
+  .brief-for h2 { font-family: 'Cormorant SC', serif; font-size: 14px; color: #666; font-weight: 500; letter-spacing: 0.1em; }
+  .brief-for p { font-size: 14px; font-weight: 500; }
+  .score-bar { background: #f0f0f0; border-radius: 6px; height: 24px; margin: 16px 0; position: relative; overflow: hidden; }
+  .score-fill { height: 100%; background: linear-gradient(90deg, #b08d57, #8b6240); border-radius: 6px; }
   .score-text { display: flex; justify-content: space-between; font-size: 13px; color: #666; }
   .section { margin-bottom: 28px; }
-  .section h3 { font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 600; margin-bottom: 12px; padding-bottom: 6px; border-bottom: 1px solid #eee; }
-  .roadmap-item { display: flex; gap: 16px; margin-bottom: 12px; padding: 12px; background: #fafafa; border-radius: 8px; }
-  .phase-label { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 12px; color: #666; min-width: 60px; }
-  .roadmap-title { font-weight: 600; font-size: 14px; }
+  .section h3 { font-family: 'Cormorant SC', serif; font-size: 16px; font-weight: 500; letter-spacing: 0.1em; margin-bottom: 12px; padding-bottom: 6px; border-bottom: 1px solid #eee; }
+  .roadmap-item { display: flex; gap: 16px; margin-bottom: 12px; padding: 12px; background: #fafafa; border-radius: 6px; }
+  .phase-label { font-family: 'Cormorant SC', serif; font-weight: 500; font-size: 12px; color: #666; min-width: 60px; letter-spacing: 0.05em; }
+  .roadmap-title { font-weight: 500; font-size: 14px; }
   .roadmap-desc { font-size: 13px; color: #555; }
   .risk { padding: 10px 14px; background: #fff5f5; border-left: 3px solid #ff5050; margin-bottom: 8px; font-size: 13px; color: #555; border-radius: 0 6px 6px 0; }
   .benchmarks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-  .bench { text-align: center; padding: 16px; background: #fafafa; border-radius: 8px; }
-  .bench-value { font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 700; color: #1a1a2e; }
+  .bench { text-align: center; padding: 16px; background: #fafafa; border-radius: 6px; }
+  .bench-value { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 500; color: #1a1a1a; }
   .bench-label { font-size: 11px; color: #888; }
-  .package { padding: 20px; border: 2px solid #b8a99a; border-radius: 10px; background: #f5f0eb; }
-  .package h4 { font-family: 'Space Grotesk', sans-serif; font-size: 16px; margin-bottom: 4px; }
+  .package { padding: 20px; border: 2px solid #b08d57; border-radius: 6px; background: #f5f0eb; }
+  .package h4 { font-family: 'Cormorant Garamond', serif; font-size: 16px; font-weight: 500; margin-bottom: 4px; }
   .package p { font-size: 13px; color: #555; margin-bottom: 12px; }
   .package li { font-size: 13px; margin-left: 16px; margin-bottom: 4px; }
   .next-step { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid #eee; }
-  .step-num { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 16px; color: #96877a; min-width: 24px; }
-  .step-title { font-weight: 600; font-size: 13px; }
+  .step-num { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 16px; color: #b08d57; min-width: 24px; }
+  .step-title { font-weight: 500; font-size: 13px; }
   .step-desc { font-size: 12px; color: #666; }
-  .footer { margin-top: 40px; padding-top: 20px; border-top: 2px solid #b8a99a; text-align: center; font-size: 12px; color: #888; }
-  .footer a { color: #1a1a2e; font-weight: 600; }
+  .footer { margin-top: 40px; padding-top: 20px; border-top: 2px solid #b08d57; text-align: center; font-size: 12px; color: #888; }
+  .footer a { color: #1a1a1a; font-weight: 500; }
   .summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 20px; font-size: 13px; }
   .summary-item { padding: 8px 12px; background: #fafafa; border-radius: 6px; }
   .summary-label { color: #888; font-size: 11px; }
