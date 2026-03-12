@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GTM Readiness Assessment — Transparent Eyeball</title>
+<meta name="description" content="Take the free GTM Readiness Assessment for games and apps. Answer 10 questions and get a personalized go-to-market brief with benchmarks, roadmap, and recommendations.">
+<link rel="canonical" href="https://www.transparenteyeball.fi/assessment/">
+
+<!-- Open Graph -->
+<meta property="og:title" content="GTM Readiness Assessment — How Ready Is Your Game for Market?">
+<meta property="og:description" content="Free 10-question assessment. Get a personalized go-to-market brief with benchmarks, roadmap, and actionable recommendations for your game or app.">
+<meta property="og:url" content="https://www.transparenteyeball.fi/assessment/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Transparent Eyeball">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="GTM Readiness Assessment — How Ready Is Your Game for Market?">
+<meta name="twitter:description" content="Free 10-question assessment. Get a personalized go-to-market brief with benchmarks, roadmap, and actionable recommendations.">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Cormorant+SC:wght@400;500;600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+
+<!-- Styles -->
+<link rel="stylesheet" href="../styles.css">
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5J9WYGREJ5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-5J9WYGREJ5');
+</script>
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "GTM Readiness Assessment",
+  "description": "Free 10-question assessment that generates a personalized go-to-market brief for games and apps, including benchmarks, roadmap, and strategic recommendations.",
+  "url": "https://www.transparenteyeball.fi/assessment/",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "EUR"
+  },
+  "provider": {
+    "@type": "Organization",
+    "name": "Transparent Eyeball",
+    "url": "https://www.transparenteyeball.fi"
+  }
+}
+</script>
+</head>
+<body>
+
+<!-- ===== NAVIGATION ===== -->
+<nav id="navbar">
+  <div class="container">
+    <a href="/" class="nav-logo">
+      <img src="../logo-eye.svg" alt="Transparent Eyeball" style="width:32px;height:32px;">
+      <span>Transparent Eyeball</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/#approach">Approach</a></li>
+      <li><a href="/assessment/">Assessment</a></li>
+      <li><a href="/resources/">Resources</a></li>
+      <li><a href="/#clients">Clients</a></li>
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#contact">Contact</a></li>
+      <li><a href="/assessment/" class="nav-cta">Start Assessment</a></li>
+    </ul>
+    <button class="mobile-menu-btn" onclick="toggleMobileNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-nav-close" onclick="toggleMobileNav()">&times;</button>
+  <a href="/#approach" onclick="toggleMobileNav()">Approach</a>
+  <a href="/assessment/" onclick="toggleMobileNav()">Assessment</a>
+  <a href="/resources/" onclick="toggleMobileNav()">Resources</a>
+  <a href="/#clients" onclick="toggleMobileNav()">Clients</a>
+  <a href="/#about" onclick="toggleMobileNav()">About</a>
+  <a href="/#contact" onclick="toggleMobileNav()">Contact</a>
+  <a href="/assessment/" class="nav-cta" onclick="toggleMobileNav()" style="margin-top:16px;">Start Assessment</a>
+</div>
+
+<!-- ===== GTM READINESS ASSESSMENT ===== -->
+<section class="assessment" id="assessment" style="padding-top: 140px;">
+  <div class="container">
+    <div class="assessment-header fade-in">
+      <p class="section-label">Free Strategic Tool</p>
+      <h2 class="section-title">GTM Readiness Assessment</h2>
+      <p class="section-subtitle">Answer a few questions about your game or app and receive a personalized go-to-market brief with actionable recommendations.</p>
+    </div>
+
+    <!-- Assessment Form -->
+    <div class="assessment-container" id="assessmentForm">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <div class="step-indicator">
+        <span class="step-count" id="stepCount">Question 1 of 10</span>
+      </div>
+      <div class="assessment-card" id="assessmentCard">
+        <!-- Steps rendered by assessment.js -->
+      </div>
+    </div>
+
+    <!-- Results (hidden initially) -->
+    <div class="results-container" id="resultsContainer">
+      <!-- Populated by assessment.js -->
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA TO RESOURCES ===== -->
+<section class="approach" id="explore-more" style="padding: 60px 0;">
+  <div class="container">
+    <div class="integrated-callout fade-in">
+      <div class="integrated-callout-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      </div>
+      <div>
+        <h3>Explore GTM Resources</h3>
+        <p>Browse our library of free templates, frameworks, and guides organized by GTM lifecycle stage &mdash; from idea validation to growth and retention.</p>
+        <a href="/resources/" style="display:inline-flex;align-items:center;gap:8px;margin-top:12px;font-family:var(--font-label);font-size:0.72rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);transition:color 0.2s;">
+          Browse Resources
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="../logo-eye.svg" alt="Transparent Eyeball" style="width:24px;height:24px;">
+        <span>Transparent Eyeball</span>
+      </div>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/assessment/">Assessment</a>
+        <a href="/resources/">Resources</a>
+        <a href="/#about">About</a>
+        <a href="/#contact">Contact</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Transparent Eyeball. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Toast -->
+<div class="toast" id="toast">
+  <span class="toast-icon">&#10003;</span>
+  <span class="toast-text" id="toastText">Message sent successfully!</span>
+</div>
+
+<!-- Scripts -->
+<script src="../scripts/main.js"></script>
+<script src="../scripts/assessment.js"></script>
+<script>
+  // Initialize assessment
+  renderStep(0);
+
+  // Check for shared results URL parameters
+  checkForSharedResults();
+</script>
+</body>
+</html>
