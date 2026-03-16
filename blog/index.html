@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — Transparent Eyeball</title>
+<meta name="description" content="Practical thinking on go-to-market strategy for mobile games and family apps. From soft-launch playbooks to kids' marketing frameworks.">
+<link rel="canonical" href="https://www.transparenteyeball.fi/blog/">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Blog — Transparent Eyeball">
+<meta property="og:description" content="Practical thinking on go-to-market strategy for mobile games and family apps.">
+<meta property="og:url" content="https://www.transparenteyeball.fi/blog/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Transparent Eyeball">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Blog — Transparent Eyeball">
+<meta name="twitter:description" content="Practical thinking on go-to-market strategy for mobile games and family apps.">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Cormorant+SC:wght@400;500;600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+
+<!-- Styles -->
+<link rel="stylesheet" href="../styles.css">
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5J9WYGREJ5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-5J9WYGREJ5');
+</script>
+</head>
+<body>
+
+<!-- ===== NAVIGATION ===== -->
+<nav id="navbar">
+  <div class="container">
+    <a href="/" class="nav-logo">
+      <img src="/logo-eye-new.png" alt="Transparent Eyeball" style="height:32px;width:auto;">
+      <span>Transparent Eyeball</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/#approach">Approach</a></li>
+      <li><a href="/assessment/">Assessment</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#contact">Contact</a></li>
+      <li><a href="/assessment/" class="nav-cta">Start Assessment</a></li>
+    </ul>
+    <button class="mobile-menu-btn" onclick="toggleMobileNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-nav-close" onclick="toggleMobileNav()">&times;</button>
+  <a href="/#approach" onclick="toggleMobileNav()">Approach</a>
+  <a href="/assessment/" onclick="toggleMobileNav()">Assessment</a>
+  <a href="/blog/" onclick="toggleMobileNav()">Blog</a>
+  <a href="/#about" onclick="toggleMobileNav()">About</a>
+  <a href="/#contact" onclick="toggleMobileNav()">Contact</a>
+  <a href="/assessment/" class="nav-cta" onclick="toggleMobileNav()" style="margin-top:16px;">Start Assessment</a>
+</div>
+
+<!-- ===== BLOG LISTING ===== -->
+<section class="blog-listing" style="padding-top: 140px; min-height: 70vh;">
+  <div class="container" style="max-width: 720px;">
+    <header class="fade-in" style="margin-bottom: 60px;">
+      <p class="section-label">Blog</p>
+      <h1 style="font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; line-height: 1.15; margin-bottom: 12px;">Thinking on GTM</h1>
+      <p style="color: var(--text-secondary); font-size: 1rem; max-width: 500px;">Practical frameworks and playbooks for marketing games and family apps. No fluff.</p>
+    </header>
+
+    <div class="blog-posts fade-in">
+
+      <a href="/blog/marketing-kids-or-parents/" class="blog-post-card">
+        <div class="blog-post-meta">
+          <time datetime="2026-03-16">March 16, 2026</time>
+        </div>
+        <h2>Marketing for Kids or Parents?</h2>
+        <p>The dual-audience problem is the defining tension in children's game marketing. A practical framework for deciding how much budget goes to each audience.</p>
+        <span class="blog-post-read">Read &rarr;</span>
+      </a>
+
+      <a href="/blog/kids-game-soft-launch-checklist/" class="blog-post-card">
+        <div class="blog-post-meta">
+          <time datetime="2026-03-16">March 16, 2026</time>
+        </div>
+        <h2>Kids Game Soft-Launch Checklist</h2>
+        <p>Every soft-launch guide covers retention and monetization tuning. None of them cover what's different when your players are children. COPPA, parental gates, kid-safe UA, and more.</p>
+        <span class="blog-post-read">Read &rarr;</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="/logo-eye-new.png" alt="Transparent Eyeball" style="height:24px;width:auto;">
+        <span>Transparent Eyeball</span>
+      </div>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/assessment/">Assessment</a>
+        <a href="/blog/">Blog</a>
+        <a href="/#about">About</a>
+        <a href="/#contact">Contact</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Transparent Eyeball. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="/scripts/main.js"></script>
+</body>
+</html>

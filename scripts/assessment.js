@@ -387,7 +387,7 @@ function generateResults() {
 
   const nextSteps = [
     { title: 'Review This Brief', desc: 'Take a moment to review the analysis and recommendations. A PDF copy is available to download and share with your team.' },
-    { title: 'Book a Strategy Call', desc: 'Let\'s discuss your specific situation, validate these recommendations, and explore how I can help execute.' },
+    { title: 'Book a Meeting', desc: 'Let\'s discuss your specific situation, validate these recommendations, and explore how I can help execute.', link: 'https://calendar.app.google/woiGdHQewrKzYjSJ7' },
     { title: 'Receive a Custom Proposal', desc: 'After our call, I\'ll send a tailored proposal with specific scope, timeline, and investment for your engagement.' },
     { title: 'Start Moving', desc: 'We begin with a focused strategy sprint to address your most critical priorities first.' },
   ];
@@ -458,6 +458,65 @@ function generateResults() {
       </div>
     </div>
 
+    <div class="results-section saas-teaser-section">
+      <h3 class="results-section-title"><span>&#9656;</span> Full GTM Dashboard</h3>
+      <p style="color:var(--text-secondary);font-size:0.9rem;margin-bottom:20px;">See your complete GTM profile with detailed channel recommendations, competitive positioning, and weekly action plans.</p>
+      <div class="saas-teaser">
+        <div class="saas-teaser-blur">
+          <div class="saas-teaser-row">
+            <div class="saas-teaser-card">
+              <div class="saas-teaser-label">Channel Mix Score</div>
+              <div class="saas-teaser-value">73/100</div>
+              <div class="saas-teaser-bar"><div class="saas-teaser-bar-fill" style="width:73%"></div></div>
+            </div>
+            <div class="saas-teaser-card">
+              <div class="saas-teaser-label">Creative Readiness</div>
+              <div class="saas-teaser-value">58/100</div>
+              <div class="saas-teaser-bar"><div class="saas-teaser-bar-fill" style="width:58%"></div></div>
+            </div>
+            <div class="saas-teaser-card">
+              <div class="saas-teaser-label">Market Timing</div>
+              <div class="saas-teaser-value">High</div>
+              <div class="saas-teaser-bar"><div class="saas-teaser-bar-fill" style="width:85%"></div></div>
+            </div>
+          </div>
+          <div class="saas-teaser-row">
+            <div class="saas-teaser-card wide">
+              <div class="saas-teaser-label">Recommended UA Channels</div>
+              <div class="saas-teaser-channels">
+                <span>Apple Search Ads</span><span>TikTok</span><span>Influencer</span><span>Cross-promo</span><span>ASO</span>
+              </div>
+            </div>
+            <div class="saas-teaser-card">
+              <div class="saas-teaser-label">Predicted CPI</div>
+              <div class="saas-teaser-value">$1.85</div>
+            </div>
+          </div>
+          <div class="saas-teaser-row">
+            <div class="saas-teaser-card wide">
+              <div class="saas-teaser-label">12-Week Action Plan</div>
+              <div class="saas-teaser-timeline">
+                <div class="saas-teaser-week"><span>W1-2</span> Brand audit & positioning</div>
+                <div class="saas-teaser-week"><span>W3-4</span> Creative asset development</div>
+                <div class="saas-teaser-week"><span>W5-8</span> Channel testing & optimization</div>
+                <div class="saas-teaser-week"><span>W9-12</span> Scale winners, cut losers</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="saas-teaser-overlay">
+          <div class="saas-teaser-cta">
+            <p style="font-family:var(--font-display);font-size:1.3rem;font-weight:400;margin-bottom:6px;">Unlock your full GTM dashboard</p>
+            <p style="font-size:0.82rem;color:var(--text-secondary);margin-bottom:16px;">Coming soon &mdash; join the waitlist for early access.</p>
+            <a href="/#contact" class="saas-teaser-btn">
+              Get Early Access
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="results-section">
       <h3 class="results-section-title"><span>&#9733;</span> Recommended Package</h3>
       <div class="package-card">
@@ -476,7 +535,7 @@ function generateResults() {
           <li class="next-step-item">
             <span class="next-step-num">${i + 1}</span>
             <div>
-              <h4>${s.title}</h4>
+              <h4>${s.link ? `<a href="${s.link}" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;">${s.title} &rarr;</a>` : s.title}</h4>
               <p>${s.desc}</p>
             </div>
           </li>
@@ -489,9 +548,9 @@ function generateResults() {
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         Download PDF Brief
       </button>
-      <a href="/#contact" class="btn-secondary">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        Book a Strategy Call
+      <a href="https://calendar.app.google/woiGdHQewrKzYjSJ7" target="_blank" rel="noopener" class="btn-secondary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Let's book a meeting
       </a>
     </div>
 
