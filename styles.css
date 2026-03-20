@@ -1359,6 +1359,118 @@ section {
   line-height: 1.4;
 }
 
+/* ===== EXPERIENCE ===== */
+.experience-section {
+  margin-top: 80px;
+  padding-top: 60px;
+  border-top: 1px solid var(--border);
+}
+
+.experience-heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  margin-bottom: 32px;
+}
+
+.experience-intro {
+  color: var(--text-secondary);
+  font-style: italic;
+  margin-bottom: 32px;
+  font-size: 1rem;
+}
+
+.experience-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.experience-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 32px 28px;
+  transition: border-color 0.3s var(--ease-out);
+}
+
+.experience-card:hover {
+  border-color: var(--border-hover);
+}
+
+.experience-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 6px;
+  gap: 12px;
+}
+
+.experience-card-header h4 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--text-primary);
+}
+
+.experience-period {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.experience-role {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--accent);
+  font-size: 0.88rem;
+  margin-bottom: 14px;
+}
+
+.experience-card > p:last-child {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+/* Career timeline */
+.career-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.career-entry {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 32px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.career-entry:first-child {
+  padding-top: 0;
+}
+
+.career-entry:last-child {
+  border-bottom: none;
+}
+
+.career-company {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: var(--text-primary);
+}
+
+.career-detail {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
 /* ===== CONTACT SECTION ===== */
 .contact {
   background: var(--bg-secondary);
@@ -2110,6 +2222,10 @@ footer {
 
   .about-stats { flex-wrap: wrap; gap: 24px; }
 
+  .experience-grid {
+    grid-template-columns: 1fr;
+  }
+
   .contact-content {
     grid-template-columns: 1fr;
     gap: 40px;
@@ -2169,6 +2285,24 @@ footer {
 
   .about-stats {
     grid-template-columns: 1fr;
+  }
+
+  .experience-section {
+    margin-top: 48px;
+    padding-top: 40px;
+  }
+
+  .experience-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .experience-card {
+    padding: 24px 20px;
+  }
+
+  .career-entry {
+    grid-template-columns: 1fr;
+    gap: 6px;
   }
 
   .results-actions {
