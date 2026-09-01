@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marja Konttinen — Portfolio</title>
+<meta name="description" content="Work portfolio of Marja Konttinen: marketing for games, emerging tech and digital culture, 2001 to the present.">
+
+<!-- Unlisted page. Remove the next line to allow search engines to index it. -->
+<meta name="robots" content="noindex, nofollow">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg:        #faf8f4;
+  --bg-sunk:   #f2eee6;
+  --text:      #1a1a1a;
+  --text-dim:  #6b6560;
+  --rule:      #ddd6ca;
+  --rule-soft: #e8e2d7;
+  --accent:    #7a5c2e;
+  --accent-rule: #b08d57;
+
+  --font-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --col-year: 4.75rem;
+  --col-media: 8.75rem;
+  --gap: 1.75rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:        #141414;
+    --bg-sunk:   #1a1a1a;
+    --text:      #f2ede4;
+    --text-dim:  #8a817c;
+    --rule:      #3a3632;
+    --rule-soft: #2a2724;
+    --accent:    #c39c62;
+    --accent-rule: #b08d57;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.72;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(176,141,87,0.45); }
+a:hover { border-bottom-color: currentColor; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+img { max-width: 100%; display: block; }
+
+.skip-link {
+  position: absolute; left: -9999px; top: 0;
+  background: var(--bg); color: var(--accent);
+  padding: 0.75rem 1.25rem; z-index: 100; border: 1px solid var(--accent);
+}
+.skip-link:focus { left: 0.5rem; top: 0.5rem; }
+
+.wrap {
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ===== Sticky section nav ===== */
+.section-nav {
+  position: sticky; top: 0; z-index: 50;
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--rule-soft);
+}
+@supports not (background: color-mix(in srgb, red 50%, transparent)) {
+  .section-nav { background: var(--bg); }
+}
+.section-nav ul {
+  list-style: none; margin: 0; padding: 0.6rem 0;
+  display: flex; gap: 1.25rem;
+  overflow-x: auto; scrollbar-width: none;
+  font-family: var(--font-mono);
+  font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase;
+  white-space: nowrap;
+}
+.section-nav ul::-webkit-scrollbar { display: none; }
+.section-nav a {
+  color: var(--text-dim); border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+}
+.section-nav a:hover { color: var(--text); }
+.section-nav a[aria-current="true"] { color: var(--accent); border-bottom-color: var(--accent-rule); }
+
+/* ===== Header ===== */
+.page-header { padding: 4.5rem 0 3rem; }
+.page-header .id { display: flex; gap: 2rem; align-items: flex-start; flex-wrap: wrap; }
+.portrait { width: 8.75rem; flex: 0 0 auto; }
+.portrait img {
+  width: 8.75rem; height: 8.75rem; object-fit: cover;
+  border-radius: 2px; background: var(--bg-sunk);
+}
+.portrait .credit {
+  font-family: var(--font-mono); font-size: 0.62rem; color: var(--text-dim);
+  margin-top: 0.55rem; line-height: 1.4; letter-spacing: 0.02em;
+}
+.id-text { flex: 1 1 20rem; min-width: 0; }
+
+h1 {
+  font-family: var(--font-display);
+  font-weight: 400; font-size: clamp(2.4rem, 6vw, 3.4rem);
+  line-height: 1.05; margin: 0 0 0.5rem; letter-spacing: -0.01em;
+}
+.strapline {
+  font-size: 1.05rem; color: var(--text-dim);
+  margin: 0 0 1.5rem; max-width: 34ch;
+}
+.contact-lines { font-family: var(--font-mono); font-size: 0.78rem; line-height: 2; margin: 0; }
+.contact-lines li { list-style: none; }
+.contact-lines { padding: 0; }
+
+/* ===== Sections ===== */
+.section { padding: 3.25rem 0 0.5rem; }
+.section + .section { border-top: 1px solid var(--rule-soft); margin-top: 2.5rem; }
+
+h2 {
+  font-family: var(--font-mono);
+  font-size: 0.72rem; font-weight: 400;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--accent); margin: 0 0 2rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid var(--accent-rule);
+}
+
+h3 {
+  font-family: var(--font-display);
+  font-size: 1.65rem; font-weight: 400; line-height: 1.2;
+  margin: 3rem 0 1.75rem;
+}
+h3.group {
+  font-size: 0.72rem; font-family: var(--font-mono); font-weight: 400;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-dim);
+  margin: 3.5rem 0 1.75rem; padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--rule-soft);
+}
+.section > h3:first-of-type, .section > .entry:first-of-type h3 { margin-top: 0; }
+
+.prose { max-width: 68ch; }
+.prose p { margin: 0 0 1.15rem; }
+.lede {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3.4vw, 2rem); line-height: 1.3;
+  font-weight: 300; margin: 0 0 1.75rem; max-width: 24ch;
+}
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* ===== Entries ===== */
+.entry {
+  display: grid;
+  grid-template-columns: var(--col-year) var(--col-media) minmax(0, 1fr);
+  gap: 0 var(--gap);
+  padding-bottom: 2.5rem;
+}
+.entry-year {
+  font-family: var(--font-mono); font-size: 0.72rem;
+  color: var(--text-dim); letter-spacing: 0.02em;
+  padding-top: 0.35rem; line-height: 1.5;
+}
+.entry-media { grid-column: 2; }
+.entry-media img {
+  width: 8.75rem; height: 8.75rem; object-fit: contain;
+  background: var(--bg-sunk); border-radius: 2px; padding: 0;
+}
+.entry-media img.fill { object-fit: cover; }
+.entry-body { grid-column: 3; max-width: 68ch; }
+.entry-body h4, .entry-body h5 {
+  font-family: var(--font-display);
+  font-weight: 500; margin: 0 0 0.25rem; line-height: 1.25;
+}
+.entry-body h4 { font-size: 1.4rem; }
+.entry-body h5 { font-size: 1.15rem; font-style: italic; font-weight: 400; }
+.entry-meta {
+  font-family: var(--font-mono); font-size: 0.72rem;
+  color: var(--text-dim); margin: 0 0 0.9rem; line-height: 1.6;
+}
+.entry-body p { margin: 0 0 1rem; }
+.entry-body p:last-child { margin-bottom: 0; }
+
+/* Entries given a little more room */
+.entry--feature { padding-bottom: 3.5rem; }
+.entry--feature .entry-body h4 { font-size: 1.85rem; }
+.entry--feature .entry-body { font-size: 1.06rem; }
+
+/* Sub-entries, indented under their parent */
+.sub-entries {
+  grid-column: 3;
+  max-width: 68ch;
+  margin-top: 0.5rem;
+  padding-left: 1.25rem;
+  border-left: 1px solid var(--rule-soft);
+}
+.sub-entry {
+  display: grid;
+  grid-template-columns: var(--col-media) minmax(0, 1fr);
+  gap: 0 var(--gap);
+  padding: 1.5rem 0 0;
+}
+.sub-entry img {
+  width: 6.25rem; height: 6.25rem; object-fit: contain;
+  background: var(--bg-sunk); border-radius: 2px;
+}
+.sub-entry img.fill { object-fit: cover; }
+.sub-entry .entry-media { grid-column: 1; }
+.sub-entry .entry-body { grid-column: 2; }
+
+/* ===== Plain lists ===== */
+.list { list-style: none; margin: 0; padding: 0; max-width: 68ch; }
+.list li { padding: 0.45rem 0; border-bottom: 1px solid var(--rule-soft); }
+.list li:last-child { border-bottom: 0; }
+
+.list--years li {
+  display: grid; grid-template-columns: 10rem minmax(0, 1fr); gap: 0 var(--gap);
+}
+.list--years .yr {
+  font-family: var(--font-mono); font-size: 0.72rem;
+  color: var(--text-dim); padding-top: 0.28rem;
+}
+
+/* ===== Footer ===== */
+.page-footer {
+  margin-top: 3.5rem; padding: 2.5rem 0 4.5rem;
+  border-top: 1px solid var(--rule-soft);
+  font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-dim);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 46rem) {
+  :root { --col-media: 5.5rem; --gap: 1.1rem; }
+  .entry { grid-template-columns: var(--col-media) minmax(0, 1fr); }
+  .entry-year { grid-column: 1 / -1; padding-top: 0; padding-bottom: 0.5rem; }
+  .entry-media { grid-column: 1; }
+  .entry-media img { width: 5.5rem; height: 5.5rem; }
+  .entry-body { grid-column: 2; }
+  .sub-entries { grid-column: 1 / -1; padding-left: 0.9rem; margin-top: 1rem; }
+  .sub-entry { grid-template-columns: 4.25rem minmax(0, 1fr); }
+  .sub-entry img { width: 4.25rem; height: 4.25rem; }
+  .list--years li { grid-template-columns: 1fr; gap: 0; }
+  .list--years .yr { padding-top: 0; }
+  .portrait, .portrait img { width: 6.5rem; height: auto; }
+  .portrait img { height: 6.5rem; }
+  .page-header { padding: 2.5rem 0 2rem; }
+}
+
+/* ===== Print ===== */
+@media print {
+  :root {
+    --bg: #ffffff; --bg-sunk: #ffffff; --text: #000000;
+    --text-dim: #444444; --rule: #999999; --rule-soft: #cccccc;
+    --accent: #000000; --accent-rule: #666666;
+    --col-media: 6.5rem; --gap: 1rem;
+  }
+  @page { margin: 16mm 14mm; }
+  body { background: #fff; color: #000; font-size: 10.5pt; line-height: 1.5; }
+  .section-nav, .skip-link { display: none !important; }
+  .wrap { max-width: none; padding: 0; }
+  a { color: #000; border-bottom: 0; }
+  .entry-media img { width: 6.5rem; height: 6.5rem; }
+  .sub-entry img { width: 4.5rem; height: 4.5rem; }
+  .entry, .sub-entry, .list li { break-inside: avoid; page-break-inside: avoid; }
+  /* The two entries with sub-entries are taller than a page; let them flow. */
+  .entry--long { break-inside: auto; page-break-inside: auto; }
+  h2, h3, h4, h5 { break-after: avoid; page-break-after: avoid; }
+  h2 { margin-top: 1.25rem; }
+  .section { padding-top: 1.5rem; }
+  .section + .section { margin-top: 1rem; }
+  .entry { padding-bottom: 1.25rem; }
+  .entry--feature { padding-bottom: 1.5rem; }
+  .page-footer { margin-top: 1.5rem; padding-bottom: 0; }
+  .lede { font-size: 1.3rem; max-width: none; }
+}
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ===== Sticky section nav ===== -->
+<nav class="section-nav" aria-label="Sections">
+  <div class="wrap">
+    <ul>
+      <li><a href="#top">Top</a></li>
+      <li><a href="#intro">Intro</a></li>
+      <li><a href="#now">Now</a></li>
+      <li><a href="#work">Selected work</a></li>
+      <li><a href="#career">Career</a></li>
+      <li><a href="#speaking">Speaking</a></li>
+      <li><a href="#teaching">Teaching</a></li>
+      <li><a href="#writing">Writing and research</a></li>
+      <li><a href="#recognition">Recognition</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main">
+
+<!-- ===== 1. Header ===== -->
+<header class="page-header" id="top">
+  <div class="wrap">
+    <div class="id">
+      <div class="portrait">
+        <img src="/public/assets/00-portrait.webp" width="320" height="320"
+             alt="Portrait of Marja Konttinen" fetchpriority="high">
+        <p class="credit">Photo: Saara Kujansuu</p>
+      </div>
+      <div class="id-text">
+        <h1>Marja Konttinen</h1>
+        <p class="strapline">Marketing for games, emerging tech and digital culture</p>
+        <ul class="contact-lines">
+          <li><a href="mailto:hello@transparenteyeball.fi">hello@transparenteyeball.fi</a></li>
+          <li>LinkedIn: <a href="https://www.linkedin.com/in/marjakonttinen">marjakonttinen</a></li>
+          <li>MobyGames</li>
+          <li>Discogs</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== 2. Intro ===== -->
+<section class="section" id="intro" aria-labelledby="intro-h">
+  <div class="wrap">
+    <h2 id="intro-h" class="sr-only">Intro</h2>
+    <div class="prose">
+      <p class="lede">I work where games, brands and culture meet.</p>
+      <p>I spent the Angry Birds growth years at Rovio running partnerships with NASA, Barnes &amp; Noble, 21st Century Fox and Samsung, then led marketing at the learning games company Lightneer, the mobile publisher Flaregames, Hatch Kids, Lockwood Publishing and the Web3 metaverse Decentraland. In 2022 I founded Transparent Eyeball, a consultancy for brand-driven games and go-to-market strategy. I led creative strategy on the Finnish National Gallery's Art Heist in Fortnite, and I am finishing a Master's in Cultural Production on cultural heritage in digital environments.</p>
+      <p>This page is a record of that work, from 2001 onwards. It is here mostly so the whole arc sits in one place.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 3. Now ===== -->
+<section class="section" id="now" aria-labelledby="now-h">
+  <div class="wrap">
+    <h2 id="now-h">Now</h2>
+
+    <article class="entry">
+      <p class="entry-year">2022&ndash;</p>
+      <div class="entry-media">
+        <img src="/public/assets/transparent-eyeball.webp" width="320" height="320" loading="lazy"
+             alt="Transparent Eyeball logo">
+      </div>
+      <div class="entry-body">
+        <h3>Transparent Eyeball</h3>
+        <p class="entry-meta">founder and marketing consultant, since 2022</p>
+        <p>Marketing strategy and go-to-market work for games, Web3 and cultural clients. Clients have included Sago Mini, Toca Boca, Nordlight Games, Decentraland, the Finnish National Gallery, Softworld, Apple, Sitra, creative agencies and XR startups.</p>
+      </div>
+    </article>
+
+    <article class="entry">
+      <p class="entry-year">2024&ndash;2026</p>
+      <div class="entry-media">
+        <img src="/public/assets/metropolia.webp" width="320" height="320" loading="lazy"
+             alt="Metropolia University of Applied Sciences logo">
+      </div>
+      <div class="entry-body">
+        <h3>Metropolia University of Applied Sciences</h3>
+        <p class="entry-meta">expert, 2024 to 2026</p>
+        <p>In-house expert for the New Tech for Creative Industries project.</p>
+      </div>
+    </article>
+
+    <article class="entry">
+      <p class="entry-year">2026</p>
+      <div class="entry-media">
+        <img src="/public/assets/art-heist-thumbnail.webp" width="320" height="320" loading="lazy"
+             alt="Art Heist in Fortnite, Finnish National Gallery">
+      </div>
+      <div class="entry-body">
+        <h3>Master's in Cultural Production</h3>
+        <p class="entry-meta">Metropolia, graduating 2026</p>
+        <p>Thesis on the Finnish National Gallery's Art Heist in Fortnite and cultural heritage in digital environments, with a co-authored article with Katri Halonen in preparation for journal submission.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ===== 4. Selected work ===== -->
+<section class="section" id="work" aria-labelledby="work-h">
+  <div class="wrap">
+    <h2 id="work-h">Selected work</h2>
+
+    <!-- Culture and heritage -->
+    <h3 class="group" id="culture-and-heritage">Culture and heritage</h3>
+
+    <article class="entry entry--feature">
+      <p class="entry-year">2023&ndash;2024</p>
+      <div class="entry-media">
+        <img src="/public/assets/art-heist-fortnite.webp" class="fill" width="320" height="320" loading="lazy"
+             alt="Art Heist in Fortnite, Finnish National Gallery">
+      </div>
+      <div class="entry-body">
+        <h4>Art Heist in Fortnite</h4>
+        <p class="entry-meta">Finnish National Gallery, 2023 to 2024. Creative strategist.</p>
+        <p>Led the development of an immersive Fortnite experience built to bring young people to the national art collection on their own ground. Defined the narrative and the creative strategy, and worked across the design, development and museum teams to get it made.</p>
+      </div>
+    </article>
+
+    <article class="entry">
+      <p class="entry-year">2023</p>
+      <div class="entry-media">
+        <img src="/public/assets/kansallisgalleria.webp" width="320" height="320" loading="lazy"
+             alt="Finnish National Gallery logo">
+      </div>
+      <div class="entry-body">
+        <h4>Metagallery</h4>
+        <p class="entry-meta">Finnish National Gallery with Adventure Club.</p>
+        <p>Won Grand One 2023 in the category Most Innovative Technology Use.</p>
+      </div>
+    </article>
+
+    <article class="entry">
+      <p class="entry-year">2025</p>
+      <div class="entry-media"></div>
+      <div class="entry-body">
+        <h4>Digital heritage and museum games</h4>
+        <p class="entry-meta">Nordic Diversity Connections in Arts and Culture, Oulu, October 2025. Keynote.</p>
+        <p>Spoke to Nordic and Baltic cultural policymakers on what games do for heritage institutions, and what they ask of them in return.</p>
+      </div>
+    </article>
+
+    <article class="entry">
+      <p class="entry-year"></p>
+      <div class="entry-media"></div>
+      <div class="entry-body">
+        <h4>Research</h4>
+        <p>From Display to Play: Cultural Leadership and Game Design in the Fortnite Art Heist, co-authored with Katri Halonen, in preparation for journal submission. A further paper on pracademics for CHI PLAY 2026, with Jaakko Kemppainen.</p>
+      </div>
+    </article>
+
+    <!-- Games and entertainment -->
+    <h3 class="group" id="games-and-entertainment">Games and entertainment</h3>
+
+    <article class="entry">
+      <p class="entry-year">2024&ndash;2025</p>
+      <div class="entry-media">
+        <img src="/public/assets/toca-boca.webp" width="320" height="320" loading="lazy"
+             alt="Toca Boca logo">
+      </div>
+      <div class="entry-body">
+        <h4>Toca Boca</h4>
+        <p class="entry-meta">2024 to 2025. Product marketing consultant.</p>
+        <p>Go-to-market planning, product marketing and brand alignment for a global children's entertainment IP aimed at Gen Alpha.</p>
+      </div>
+    </article>
+
+    <article class="entry">
+      <p class="entry-year">2023</p>
+      <div class="entry-media">
+        <img src="/public/assets/spin-master.webp" width="320" height="320" loading="lazy"
+             alt="Spin Master logo, publisher of Rubik's Match">
+      </div>
+      <div class="entry-body">
+        <h4>Rubik's Match</h4>
+        <p class="entry-meta">Spin Master and Nordlight Games, 2023. Product marketing consultant.</p>
+        <p>Shaped the launch messaging and the marketing tactics for a mobile game built on the Rubik's Cube IP.</p>
+      </div>
+    </article>
+
+    <article class="entry">
+      <p class="entry-year">2021&ndash;2022</p>
+      <div class="entry-media">
+        <img src="/public/assets/avakin-life-screen.webp" class="fill" width="320" height="320" loading="lazy"
+             alt="Avakin Life, Lockwood Publishing">
+      </div>
+      <div class="entry-body">
+        <h4>Avakin Life</h4>
+        <p class="entry-meta">Lockwood Publishing, 2021 to 2022. Marketing director.</p>
+        <p>Ran the teams for user acquisition, in-app marketing, CRM, social and community, plus influencer marketing, ASO and PR. Handled partnership marketing with TikTok, Apple, Google and Sony Music, and led The Voice campaign in 2021.</p>
+      </div>
+    </article>
+
+    <article class="entry">
+      <p class="entry-year">2019&ndash;2021</p>
+      <div class="entry-media">
+        <img src="/public/assets/hatch-kids-colour.webp" width="320" height="320" loading="lazy"
+             alt="Hatch Kids logo, Hatch Entertainment">
+      </div>
+      <div class="entry-body">
+        <h4>Hatch Kids</h4>
+        <p class="entry-meta">Hatch Entertainment, 2019 to 2021. Head of marketing.</p>
+        <p>Marketing strategy for a cloud streaming games service for two to eight year olds and their parents. Market research, positioning and go-to-market, plus content for parents on media education, early years pedagogy and children's media use.</p>
+      </div>
+    </article>
+
+    <article class="entry">
+      <p class="entry-year">2017&ndash;2019</p>
+      <div class="entry-media">
+        <img src="/public/assets/flaregames.webp" width="320" height="320" loading="lazy"
+             alt="Flaregames logo">
+      </div>
+      <div class="entry-body">
+        <h4>Flaregames</h4>
+        <p class="entry-meta">2017 to 2019. Marketing director.</p>
+        <p>Marketing across the whole publishing funnel, from titles in assessment and negotiation to live ops. Direct head of four product marketing managers and representative head of a department of over twenty. Brand evaluation, market research, benchmarking and KPI comparison across the portfolio.</p>
+      </div>
+    </article>
+
+    <article class="entry">
+      <p class="entry-year">2015&ndash;2017</p>
+      <div class="entry-media">
+        <img src="/public/assets/lightneer-colour.webp" width="320" height="320" loading="lazy"
+             alt="Lightneer logo, maker of Big Bang Legends">
+      </div>
+      <div class="entry-body">
+        <h4>Lightneer</h4>
+        <p class="entry-meta">Big Bang Legends, 2015 to 2017. CMO.</p>
+        <p>Company brand and strategy first, then product branding, positioning and go-to-market for the first game. Built the community, the app store presence, the ASO work, PR and influencer collaborations from nothing, through the seed funding phase and the growth of the marcom team.</p>
+      </div>
+    </article>
+
+    <article class="entry entry--feature entry--long">
+      <p class="entry-year">2011&ndash;2015</p>
+      <div class="entry-media">
+        <img src="/public/assets/rovio-colour.webp" width="320" height="320" loading="lazy"
+             alt="Rovio Entertainment logo">
+      </div>
+      <div class="entry-body">
+        <h4>Rovio Entertainment</h4>
+        <p class="entry-meta">2011 to 2015. Marketing director.</p>
+        <p>Ran brand partnerships for Angry Birds through the growth from one million to one billion downloads. Marketing planning, budgeting and KPI setting across games, books, animation and merchandising, and global and local brand campaigns from retail to educational.</p>
+      </div>
+
+      <div class="sub-entries">
+        <div class="sub-entry">
+          <div class="entry-media">
+            <img src="/public/assets/nasa-group-award.webp" class="fill" width="320" height="320" loading="lazy"
+                 alt="NASA Group Achievement Award certificate for Angry Birds Space">
+          </div>
+          <div class="entry-body">
+            <h5>Partnership with NASA</h5>
+            <p>Negotiated and ran the NASA partnership from 2011. Angry Birds Space was made with NASA and launched with a video from the International Space Station. Later updates followed the Curiosity Mars landing and the asteroid missions, and the work reached exhibitions at the Kennedy and Johnson Space Centers. The partnership received NASA's Group Achievement Award.</p>
+          </div>
+        </div>
+
+        <div class="sub-entry">
+          <div class="entry-media">
+            <img src="/public/assets/angry-birds-rio.webp" class="fill" width="320" height="320" loading="lazy"
+                 alt="Angry Birds Rio key art">
+          </div>
+          <div class="entry-body">
+            <h5>Angry Birds Rio and 21st Century Fox</h5>
+            <p>Led the Fox partnership supporting the Rio films from 2011 to 2013, starting at the first film's launch and running through to a game redesign for Rio 2. Carried integrated content supporting WWF's work in the Amazon.</p>
+          </div>
+        </div>
+
+        <div class="sub-entry">
+          <div class="entry-media">
+            <img src="/public/assets/angry-birds-star-wars.webp" class="fill" width="320" height="320" loading="lazy"
+                 alt="Angry Birds Star Wars retail merchandise">
+          </div>
+          <div class="entry-body">
+            <h5>Angry Birds Star Wars</h5>
+            <p>Partnerships and marketing with Lucasfilm, Toys R Us, Hasbro and National Geographic, across launch, campaigns and merchandise.</p>
+          </div>
+        </div>
+
+        <div class="sub-entry">
+          <div class="entry-media">
+            <img src="/public/assets/barnes-noble.webp" class="fill" width="320" height="320" loading="lazy"
+                 alt="Angry Birds Magic in-store experience at Barnes &amp; Noble">
+          </div>
+          <div class="entry-body">
+            <h5>Barnes &amp; Noble</h5>
+            <p>A custom retail experience with Angry Birds Magic across US stores, unlocking in-app content while in store, and an in-store Angry Birdday in December 2012.</p>
+          </div>
+        </div>
+
+        <div class="sub-entry">
+          <div class="entry-media">
+            <img src="/public/assets/cern.webp" class="fill" width="320" height="320" loading="lazy"
+                 alt="Angry Birds and CERN collaboration">
+          </div>
+          <div class="entry-body">
+            <h5>CERN</h5>
+            <p>Marketing planning, event participation and social content for both sides.</p>
+          </div>
+        </div>
+
+        <div class="sub-entry">
+          <div class="entry-media">
+            <img src="/public/assets/angry-birds-space.webp" class="fill" width="320" height="320" loading="lazy"
+                 alt="Angry Birds Space key art">
+          </div>
+          <div class="entry-body">
+            <h5>Angry Birds Space launch partners</h5>
+            <p>Samsung, NASA, Walmart, National Geographic and T-Mobile, with further partnerships including Slash and Ocean Elders.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Emerging tech -->
+    <h3 class="group" id="emerging-tech">Emerging tech</h3>
+
+    <article class="entry">
+      <p class="entry-year">2026</p>
+      <div class="entry-media">
+        <img src="/public/assets/metropolia.webp" width="320" height="320" loading="lazy"
+             alt="Metropolia University of Applied Sciences logo">
+      </div>
+      <div class="entry-body">
+        <h4>Critical and ethical AI</h4>
+        <p class="entry-meta">Metropolia.</p>
+        <p>A teaching module on the ethical and critical use of AI, built as part of the AI expertise work.</p>
+      </div>
+    </article>
+
+    <article class="entry">
+      <p class="entry-year">2024</p>
+      <div class="entry-media"></div>
+      <div class="entry-body">
+        <h4>Sitra Lab</h4>
+        <p class="entry-meta">Expert, advising on Web3 topics.</p>
+      </div>
+    </article>
+
+    <article class="entry">
+      <p class="entry-year">2022&ndash;2023</p>
+      <div class="entry-media">
+        <img src="/public/assets/decentraland.webp" width="320" height="320" loading="lazy"
+             alt="Decentraland logo">
+      </div>
+      <div class="entry-body">
+        <h4>Decentraland</h4>
+        <p class="entry-meta">Decentraland Foundation, 2022 to 2023. Global marketing lead.</p>
+        <p>Product, content and brand marketing, PR, communications, community management and DAO relations for a Web3 native metaverse. Coordinated weekly live operations, monthly product releases, and the quarterly tentpole events: Metaverse Fashion Week, Music Festival and Art Week.</p>
+      </div>
+    </article>
+
+    <article class="entry">
+      <p class="entry-year">2017</p>
+      <div class="entry-media">
+        <img src="/public/assets/vau-company.webp" width="320" height="320" loading="lazy"
+             alt="VAU Company logo">
+      </div>
+      <div class="entry-body">
+        <h4>VAU Company</h4>
+        <p class="entry-meta">2017. Co-founder.</p>
+        <p>A Tampere startup in visual automation, founded with four people from animation. The first service, VAU Video, was a platform for fast and affordable video production, with early work involving Slush and Aamulehti. The company was wound down when I moved to Germany and product development did not progress. I have kept it on this page on purpose. It is the clearest thing here about what founding something actually costs.</p>
+      </div>
+    </article>
+
+    <!-- Before -->
+    <h3 class="group" id="before">Before</h3>
+
+    <article class="entry entry--long">
+      <p class="entry-year">2009&ndash;2011</p>
+      <div class="entry-media"></div>
+      <div class="entry-body">
+        <h4>Isobar Global</h4>
+        <p class="entry-meta">2009 to 2011. Key account director, Netherlands and Finland.</p>
+      </div>
+
+      <div class="sub-entries">
+        <div class="sub-entry">
+          <div class="entry-media">
+            <img src="/public/assets/nokia.webp" class="fill" width="320" height="320" loading="lazy"
+                 alt="Nokia campaign work at Isobar">
+          </div>
+          <div class="entry-body">
+            <h5>Nokia</h5>
+            <p>Nokia's global digital marketing and activation across owned, bought and earned media: web, social, mobile and CRM, with a focus on social media and engagement. Worked with the partner agencies Glue, White Sheep, Farfar and Molecular.</p>
+          </div>
+        </div>
+
+        <div class="sub-entry">
+          <div class="entry-media">
+            <img src="/public/assets/adidas-football.webp" class="fill" width="320" height="320" loading="lazy"
+                 alt="adidas football campaign work at Isobar">
+          </div>
+          <div class="entry-body">
+            <h5>adidas football SS09</h5>
+            <p>Assisted the senior project manager across a six month project, handling team and client communication and third party production agencies, with daily project management on adidas Tennis and the adidas.com redesign. Webby Honoree and Webby People's Voice Award for best home page.</p>
+          </div>
+        </div>
+
+        <div class="sub-entry">
+          <div class="entry-media">
+            <img src="/public/assets/tommy-hilfiger.webp" class="fill" width="320" height="320" loading="lazy"
+                 alt="Tommy Hilfiger My Jeans My Music campaign">
+          </div>
+          <div class="entry-body">
+            <h5>Tommy Hilfiger, My Jeans My Music</h5>
+            <p>An interactive in-store campaign mixing music, RFID tags and fashion.</p>
+          </div>
+        </div>
+
+        <div class="sub-entry">
+          <div class="entry-media">
+            <img src="/public/assets/discovery-networks.webp" class="fill" width="320" height="320" loading="lazy"
+                 alt="Discovery Networks Benelux corporate site">
+          </div>
+          <div class="entry-body">
+            <h5>Discovery Networks Benelux</h5>
+            <p>A corporate B2B site with a tailored backend, built around the Kraanspoor headquarters. Red Dot award, 2009.</p>
+          </div>
+        </div>
+
+        <div class="sub-entry">
+          <div class="entry-media">
+            <img src="/public/assets/sca-libresse.webp" class="fill" width="320" height="320" loading="lazy"
+                 alt="SCA Libresse Eco Actions campaign">
+          </div>
+          <div class="entry-body">
+            <h5>SCA, Libresse Eco Actions</h5>
+            <p>Setup, information architecture and project management for a sustainability campaign across Libresse, Bodyform and Nana.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="entry">
+      <p class="entry-year">2008</p>
+      <div class="entry-media">
+        <img src="/public/assets/sap-dlabs.webp" width="320" height="320" loading="lazy"
+             alt="SAP logo, client of D-Labs Berlin">
+      </div>
+      <div class="entry-body">
+        <h4>D-Labs, Berlin</h4>
+        <p class="entry-meta">2008. Interaction designer.</p>
+        <p>Conceptual design, storyboard prototyping and UI visual design on a web application refresh for SAP, working to SAP's own interface guidelines. Also creative direction on the visual UX and the interface guidelines for Facton's process cost software. Screens are confidential.</p>
+      </div>
+    </article>
+
+    <article class="entry">
+      <p class="entry-year">2006&ndash;2007</p>
+      <div class="entry-media">
+        <img src="/public/assets/microsoft-dynamics.webp" width="320" height="320" loading="lazy"
+             alt="Microsoft Dynamics logo">
+      </div>
+      <div class="entry-body">
+        <h4>Microsoft Dynamics, Copenhagen</h4>
+        <p class="entry-meta">2006 to 2007. User experience visual designer.</p>
+        <p>A year in one of the harder corners of UX, business software for corporate users. Visual elements for the interface, an internal identity for the Dynamics UX team including SharePoint design, templates and guidelines, plus documentation and international UX workshops.</p>
+      </div>
+    </article>
+
+    <article class="entry">
+      <p class="entry-year">2007&ndash;2008</p>
+      <div class="entry-media">
+        <img src="/public/assets/borsen-elearning.webp" class="fill" width="320" height="320" loading="lazy"
+             alt="B&oslash;rsen Forum eLearning tutorials">
+      </div>
+      <div class="entry-body">
+        <h4>Børsen Forum, Denmark</h4>
+        <p class="entry-meta">2007 to 2008. eLearning developer.</p>
+        <p>Video tutorials for Microsoft Office for the Finnish market, from beginner to expert, built from speech, text and animated screen actions. Also reviewed other developers' work before publication.</p>
+      </div>
+    </article>
+
+    <article class="entry">
+      <p class="entry-year">2006&ndash;2007</p>
+      <div class="entry-media">
+        <img src="/public/assets/zentropa-foodos.webp" class="fill" width="320" height="320" loading="lazy"
+             alt="Foodos concept, Zentropa Workz innovation pilot for Danisco">
+      </div>
+      <div class="entry-body">
+        <h4>Zentropa Workz, Denmark</h4>
+        <p class="entry-meta">2006 to 2007. Junior consultant.</p>
+        <p>Project manager and graphic designer on a five week innovation pilot for the ingredient company Danisco, in a team of university students. The Foodos concept that came out of it was taken forward as two real workshops.</p>
+      </div>
+    </article>
+
+    <article class="entry">
+      <p class="entry-year">2004&ndash;2005</p>
+      <div class="entry-media">
+        <img src="/public/assets/hitman-blood-money.webp" class="fill" width="320" height="320" loading="lazy"
+             alt="Hitman Blood Money, Eidos and IO Interactive">
+      </div>
+      <div class="entry-body">
+        <h4>Eidos and IO Interactive, Denmark</h4>
+        <p class="entry-meta">2004 to 2005. QA technician.</p>
+        <p>Debugging and reviewing gameplay on Hitman Blood Money, from barely playable to finished. This is where the interest in user experience and sound design started, and the first way into the games industry.</p>
+      </div>
+    </article>
+
+    <article class="entry">
+      <p class="entry-year">2001&ndash;2004</p>
+      <div class="entry-media">
+        <img src="/public/assets/rockadillo-records.webp" class="fill" width="320" height="320" loading="lazy"
+             alt="Rockadillo Records">
+      </div>
+      <div class="entry-body">
+        <h4>Rockadillo Records, Finland</h4>
+        <p class="entry-meta">2001 to 2004. Sales, promotion, marketing.</p>
+        <p>Started as an assistant and ended up handling most album releases: promotion and marketing campaigns, sales reporting, orders, some tour and concert management, and a few signings.</p>
+      </div>
+    </article>
+
+    <article class="entry">
+      <p class="entry-year">2001&ndash;</p>
+      <div class="entry-media">
+        <img src="/public/assets/music-graphics-huria.webp" class="fill" width="320" height="320" loading="lazy"
+             alt="Sleeve design for Huria, winner of an Emma award in 2008">
+      </div>
+      <div class="entry-body">
+        <h4>Graphic design and music, since 2001</h4>
+        <p class="entry-meta">Freelance, under the name Brutal Gardener from 2007.</p>
+        <p>CD and LP sleeves, layouts, identity work and band sites for Piirpauke, Hexvessel, Code, Jukka Gustavson, Sanna Kurki-Suonio, Cinta Hermo, Bittersweet and others, including sleeve design for Huria, which won an Emma award in 2008. Alongside it: web design, Google AdWords campaigns, translation from English, Swedish and Danish into Finnish on IT projects, promotional and live music photography, and music journalism for Inferno and others.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ===== 5. Career ===== -->
+<section class="section" id="career" aria-labelledby="career-h">
+  <div class="wrap">
+    <h2 id="career-h">Career</h2>
+    <ul class="list list--years">
+      <li><span class="yr">2022 to now,</span> <span>founder, Transparent Eyeball</span></li>
+      <li><span class="yr">2024 to 2026,</span> <span>expert, Metropolia UAS</span></li>
+      <li><span class="yr">2022 to 2023,</span> <span>global marketing lead, Decentraland Foundation</span></li>
+      <li><span class="yr">2021 to 2022,</span> <span>marketing director, Lockwood Publishing</span></li>
+      <li><span class="yr">2019 to 2021,</span> <span>head of marketing, Hatch Entertainment</span></li>
+      <li><span class="yr">2017 to 2019,</span> <span>marketing director, Flaregames</span></li>
+      <li><span class="yr">2017,</span> <span>co-founder, VAU Company</span></li>
+      <li><span class="yr">2015 to 2017,</span> <span>CMO, Lightneer</span></li>
+      <li><span class="yr">2011 to 2015,</span> <span>marketing director, Rovio Entertainment</span></li>
+      <li><span class="yr">2009 to 2011,</span> <span>key account director, Isobar Global</span></li>
+      <li><span class="yr">2008,</span> <span>interaction designer, D-Labs</span></li>
+      <li><span class="yr">2007 to 2008,</span> <span>eLearning developer, Børsen Forum</span></li>
+      <li><span class="yr">2006 to 2007,</span> <span>UX visual designer, Microsoft Dynamics</span></li>
+      <li><span class="yr">2006 to 2007,</span> <span>junior consultant, Zentropa Workz</span></li>
+      <li><span class="yr">2004 to 2005,</span> <span>QA technician, Eidos and IO Interactive</span></li>
+      <li><span class="yr">2001 to 2004,</span> <span>sales and promotion, Rockadillo Records</span></li>
+      <li><span class="yr">2001 onwards,</span> <span>freelance design and marketing</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== 6. Speaking ===== -->
+<section class="section" id="speaking" aria-labelledby="speaking-h">
+  <div class="wrap">
+    <h2 id="speaking-h">Speaking</h2>
+    <ul class="list">
+      <li>Keynote, Nordic Diversity Connections in Arts and Culture, Oulu, 2025</li>
+      <li>Panel, TAKU, on AI and continuous learning in the cultural sector</li>
+      <li>Keynote, PocketGamer, on the kids category in mobile games</li>
+      <li>Panel host, Mobile Growth Summit Berlin, 2018, on brands and licensing for games, with Guy Tomer of TabTale and Jeremy Horn of Jam City</li>
+      <li>Praxiology game design seminar, 2026</li>
+      <li>Visiting lecturer on mobile and game marketing at Lahden Ammattikorkeakoulu, Ahlman Institute, Neoma Business School, Tampereen Ammattikorkeakoulu and Merchant Taylors' in London</li>
+      <li>Industry mentor, Baltic Explorers</li>
+      <li>Volunteer, Slush, 2014 and 2021</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== 7. Teaching ===== -->
+<section class="section" id="teaching" aria-labelledby="teaching-h">
+  <div class="wrap">
+    <h2 id="teaching-h">Teaching</h2>
+    <ul class="list">
+      <li>Expert, New Tech for Creative Industries, Metropolia, 2024 to 2026</li>
+      <li>A Web3 and emerging tech course for Metropolia's creative industries students</li>
+      <li>A module on the ethical and critical use of AI</li>
+      <li>Part time teacher on graduate programmes: specialist topics, and substitute teaching in digital marketing, service design, account management and e-commerce</li>
+      <li>Apple certified sales trainer, 2021, running virtual seminars for Apple partners</li>
+      <li>Educational work for Kavi, Metropolia and HAMK</li>
+      <li>Certificates: media coach, media wellness and digital wellbeing, critical media literacy, early childhood education and games at Jyväskylä University</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== 8. Writing and research ===== -->
+<section class="section" id="writing" aria-labelledby="writing-h">
+  <div class="wrap">
+    <h2 id="writing-h">Writing and research</h2>
+    <ul class="list">
+      <li>From Display to Play: Cultural Leadership and Game Design in the Fortnite Art Heist, with Katri Halonen, in preparation for journal submission</li>
+      <li>A paper on pracademics for CHI PLAY 2026, with Jaakko Kemppainen</li>
+      <li>Articles for the LUME blog, Metropolia</li>
+      <li>DigiMaMa, 2020, a commissioned piece on a year in Germany at Flaregames</li>
+      <li>Music journalism, interviews, reports and reviews, largely for Inferno</li>
+      <li>Ongoing research and writing in Finnish cultural history and music</li>
+      <li>Bachelor's thesis, 2007, on the meaning of sound design for user experience in software, made with Microsoft Dynamics and graded excellent</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== 9. Recognition ===== -->
+<section class="section" id="recognition" aria-labelledby="recognition-h">
+  <div class="wrap">
+    <h2 id="recognition-h">Recognition</h2>
+    <ul class="list">
+      <li>Grand One 2023, Most Innovative Technology Use, for Metagallery</li>
+      <li>NASA Group Achievement Award for Angry Birds Space</li>
+      <li>Red Dot 2009, for the Discovery Networks Benelux site</li>
+      <li>Webby Honoree and Webby People's Voice Award, for adidas football</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== 10. Education ===== -->
+<section class="section" id="education" aria-labelledby="education-h">
+  <div class="wrap">
+    <h2 id="education-h">Education</h2>
+    <ul class="list">
+      <li>Master's in Cultural Production, Metropolia University of Applied Sciences, graduating 2026</li>
+      <li>Basic studies in education, HAMK, 13 ECTS, 2024, and experience design and experimental learning, 5 ECTS, 2025</li>
+      <li>Early childhood education in Finland, University of Jyväskylä, 1 ECTS</li>
+      <li>Digivoimaa, media education and games, Mediakasvatusseura, 5 ECTS</li>
+      <li>MSc programme in Internet and Game Studies, University of Tampere, from 2014, not completed. It is where the research background and the academic angle on games came from, and it feeds directly into the current Master's work.</li>
+      <li>Game Executive Program, Aalto University, 2014</li>
+      <li>Diploma in digital media, Hyper Island, Karlskrona, 135 ECTS, 2005 to 2007. Major in project management and graphic design.</li>
+      <li>BA, media artist in media producing and project management, Tampere University of Applied Sciences, 240 ECTS, 2003 to 2007</li>
+      <li>Guest student, Practical Innovation pilot, University of Copenhagen, 15 ECTS, 2006</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== 11. Contact ===== -->
+<section class="section" id="contact" aria-labelledby="contact-h">
+  <div class="wrap">
+    <h2 id="contact-h">Contact</h2>
+    <div class="prose">
+      <p><a href="mailto:hello@transparenteyeball.fi">hello@transparenteyeball.fi</a></p>
+      <p>LinkedIn, MobyGames, Discogs</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="page-footer">
+  <div class="wrap">
+    <p>Marja Konttinen &middot; Portrait by Saara Kujansuu &middot; Client marks are the property of their owners</p>
+  </div>
+</footer>
+
+<script>
+/* Progressive enhancement only: highlights the current section in the nav.
+   The page is complete and navigable with JavaScript disabled. */
+(function () {
+  if (!('IntersectionObserver' in window)) return;
+
+  var links = Array.prototype.slice.call(
+    document.querySelectorAll('.section-nav a[href^="#"]')
+  );
+  if (!links.length) return;
+
+  var byId = {};
+  var targets = [];
+
+  links.forEach(function (link) {
+    var id = link.getAttribute('href').slice(1);
+    var el = document.getElementById(id);
+    if (!el) return;
+    byId[id] = link;
+    targets.push(el);
+  });
+
+  var current = null;
+
+  function setCurrent(id) {
+    if (current === id) return;
+    if (current && byId[current]) byId[current].removeAttribute('aria-current');
+    current = id;
+    if (byId[id]) byId[id].setAttribute('aria-current', 'true');
+  }
+
+  var visible = {};
+
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      visible[entry.target.id] = entry.isIntersecting;
+    });
+    for (var i = 0; i < targets.length; i++) {
+      if (visible[targets[i].id]) { setCurrent(targets[i].id); return; }
+    }
+  }, { rootMargin: '-15% 0px -70% 0px', threshold: 0 });
+
+  targets.forEach(function (el) { observer.observe(el); });
+})();
+</script>
+
+</body>
+</html>
